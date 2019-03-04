@@ -1,0 +1,145 @@
+<div class="container positionContainer" >
+  <div class="row">
+      <div class="col-sm-6 ">
+        <div class="card ">
+          <div class="card-body taillediv">
+                <form>
+                    <div class="row">
+                      <div class="form-group col-md-6">
+                        <label for="inputState">Choix FCP</label>
+                        <select id="inputState" class="form-control" [(ngModel)]="fcp.typeFcp" name="typeFcp" (change)="onChangeFcp($event.target.value)">
+
+                          <option value="fcpquietude" selected>Quietude</option>
+                          <option value="fcpavantage">Avantage</option>
+                          <option value="fcphorizon">Horizon</option>
+                          <option value="fcpcroissance">Croissance</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="inputState">Type simulation</label>
+                        <select id="inputState" class="form-control" [(ngModel)]="typeSimulation" name="typeSimulation" (change)="onChangeSimulation($event.target.value)">
+
+                          <option value="sommeEcheance" selected>Somme a l'echeance</option>
+                          <option value="sommeInvestir">Somme a investir</option>
+                          <option value="sommeCautiser">Somme a cotiser</option>
+
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group" >
+                        <label for="formGroupExampleInput">Maturite de l'epargne(en nombre de mois)</label>
+                        <input class="form-control" id="formGroupExampleInput"  [(ngModel)]="maturite" name="maturite">
+                    </div>
+                      <div class="form-group" [hidden]="isMEUInput">
+                        <label for="formGroupExampleInput">Montant a Echeance unique</label>
+                        <input class="form-control" id="formGroupExampleInput" placeholder="Donner la maturite du placement"
+                               [(ngModel)]="montantVersementEcheanceUnique" name="montantVersementEcheanceUnique"
+                              >
+                    </div>
+
+                    <div class="form-group" [hidden]="isMEPInput">
+                      <label for="formGroupExampleInput">Montant  a Echeance Periodique</label>
+                      <input class="form-control" id="formGroupExampleInput" placeholder="Donner la maturite du placement"
+                            [(ngModel)]="montantVersementEcheancePeriodique" name="montantVersementEcheancePeriodique" >
+
+
+                  </div>
+                    <div class="form-group" [hidden]="isVUInput">
+                      <label for="formGroupExampleInput">Versement unique</label>
+                      <input class="form-control" id="formGroupExampleInput" [disabled]="activeInputCotisation"
+                             [(ngModel)]="versementUnique"  name="versementUnique">
+
+
+                  </div>
+                  <div class="form-group" [hidden]="isVPInput">
+                    <label for="formGroupExampleInput">Versement Periodique</label>
+                    <input class="form-control" id="formGroupExampleInput" placeholder="Donner le montant a verser" [disabled]="activeInputCotisation"
+                          [(ngModel)]="versementPeriodique"  name="versementPeriodique">
+
+
+                </div>
+                <div class="form-group">
+                  <label for="disabledTextInput">Taux Annuel en %</label>
+                  <input type="number" id="disabledTextInput" class="form-control"  [(ngModel)]="fcp.tauxAnnuel" name="tauxAnnuel" >
+                </div>
+
+                <div class="form-group">
+                  <label for="disabledTextInput">Taux Mensuel en %</label>
+                  <input type="number" id="disabledTextInput" class="form-control"  [(ngModel)]="fcp.tauxMensuel" name="tauxMensuel" >
+                </div>
+
+            </form>
+          </div>
+          <div class="card-footer">
+            <Button class="btn btn-primary" (click)="!isVPInput ? calculMontantEcheanceParMois():calculMontantAInvestirParMois()">Simuler</Button>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body taillediv">
+            <form>
+
+              <div class="form-group" [hidden]="idMEUOutput">
+                  <label for="formGroupExampleInput">Montant a Echeance unique</label>
+                  <input class="form-control" id="formGroupExampleInput" placeholder="Donner la maturite du placement"
+                        [(ngModel)]="montantVersementEcheanceUnique" name="montantVersementEcheanceUnique" disabled
+                        >
+              </div>
+
+              <div class="form-group" [hidden]="idMEUOutput">
+                <label for="formGroupExampleInput">Montant  a Echeance Periodique</label>
+                <input class="form-control" id="formGroupExampleInput"
+                      [(ngModel)]="montantVersementEcheancePeriodique" name="montantVersementEcheancePeriodique" [disabled]="ish1">
+
+
+             </div>
+
+             <div class="form-group" [hidden]="idMEUOutput">
+              <label for="formGroupExampleInput">Montant Total a Echeance</label>
+              <input class="form-control" id="formGroupExampleInput" placeholder="Donner la maturite du placement" [(ngModel)]="montantTotalEcheance" name="montantTotalEcheance" disabled>
+
+
+            </div>
+
+              <div class="form-group" [hidden]="isVUOutput">
+                <label for="formGroupExampleInput">Versement unique</label>
+                <input class="form-control" id="formGroupExampleInput" placeholder="Donner le montant a verser" disabled
+
+                      [(ngModel)]="versementUnique"  name="versementUnique">
+
+
+            </div>
+            <div class="form-group" [hidden]="isVPOutput">
+              <label for="formGroupExampleInput">Versement Periodique</label>
+              <input class="form-control" id="formGroupExampleInput" placeholder="Donner le montant a verser" disabled
+                    [(ngModel)]="versementPeriodique"  name="versementPeriodique">
+
+
+            </div>
+
+          </form>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-primary" width="100px" (click)="clean()">clean</button>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+                        <!-- <mat-slider
+                            class="form-control"
+                            [max]="max"
+                            [min]="min"
+                            [step]="step"
+                            [thumbLabel]="thumbLabel"
+                            [(ngModel)]="versementUnique"
+                            name="versementUnique"
+                          (change)="onChangeVersementPeriodique($event)"
+                          [hidden]="isSommeEcheance"
+                        >
+                        </mat-slider> -->

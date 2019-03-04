@@ -1,0 +1,86 @@
+<div class="container positionContainer" >
+  <div class="row">
+      <div class="col-sm-6">
+        <div class="card ">
+          <div class="card-body taillediv" >
+              <form>
+                  <div class="form-group col-md-4">
+                    <label for="inputState">Type de placement</label>
+                    <select id="inputState" class="form-control" [(ngModel)]="hypothese" name="hypothese" (change)="onChangeHypothese($event.target.value)">
+                      <option value="h1" selected>hypothese 1</option>
+                      <option value="h2">hypothese 2</option>
+                      <option value="h3">hypothese 3</option>
+                    </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Maturite de l'epargne (en nombre de mois)</label>
+                        <input class="form-control" id="formGroupExampleInput" placeholder="Donner la maturite du placement" [(ngModel)]="maturite" name="maturite">
+                    </div>
+                    <div class="form-group" [hidden]="isVEinput">
+                      <label for="formGroupExampleInput">VALEUR  A L'ECHEANCE VOULUE</label>
+                      <input class="form-control" id="formGroupExampleInput" placeholder="Donner la maturite du placement" [(ngModel)]="valeurEcheanceVoulue" name="valeurEcheanceVoulue">
+                   </div>
+                    <div class="form-group" [hidden]="isHypothese3">
+                      <label for="formGroupExampleInput">Montant initial a investir</label>
+                      <input class="form-control" id="formGroupExampleInput" placeholder="Donner le montant a verser" [(ngModel)]="montantInitial"  name="montantInitial">
+
+
+                    </div>
+                    <div class="form-group" [hidden]="isCMInput">
+                      <label for="formGroupExampleInput">Cotisation mensuelle</label>
+                      <input class="form-control" id="formGroupExampleInput" placeholder="Donner le montant a verser"  [(ngModel)]="cotisationMensuel"  name="cotisationMensuel">
+
+                    </div>
+                    <div class="form-group">
+                      <label for="disabledTextInput">Taux Annuel en %</label>
+                      <input type="number" id="disabledTextInput" class="form-control"  [(ngModel)]="tauxAnnuel" name="tauxAnnuel"  >
+                    </div>
+
+                    <div class="form-group">
+                      <label for="disabledTextInput">Taux Mensuel en %</label>
+                      <input type="number" id="disabledTextInput" class="form-control"  [(ngModel)]="tauxMensuel" name="tauxMensuel"  >
+                    </div>
+
+                </form>
+
+
+          </div>
+          <div class="card-footer">
+            <Button class="btn btn-primary" (click)="!isCMInput ? calculMontantEcheanceParMois():calculMontantAInvestirParMois()">Simuler</Button>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="card ">
+          <div class="card-body taillediv">
+              <form>
+                <div class="form-group" [hidden]="isCMOutPut">
+                  <label for="formGroupExampleInput">La somme à cotiser par mois</label>
+                  <input class="form-control" id="formGroupExampleInput" placeholder="Donner le montant a verser"  [(ngModel)]="cotisationMensuel"  name="cotisationMensuel" disabled>
+
+
+                </div>
+                  <div class="form-group">
+                      <label for="formGroupExampleInput">Montant Cotisation a Echeance</label>
+                      <input class="form-control" id="formGroupExampleInput" placeholder="Donner la maturite du placement" [(ngModel)]="valeurCotisationEcheance" name="valeurCotisationEcheance" disabled>
+                  </div>
+
+                  <div class="form-group" [hidden]="isVEOutput">
+                    <label for="formGroupExampleInput">Montant à l'écheance voulue</label>
+                    <input class="form-control" id="formGroupExampleInput" placeholder="Donner la maturite du placement" [(ngModel)]="valeurEcheanceVoulue" name="valeurEcheanceVoulue" [disabled]="ish1" >
+                 </div>
+
+
+
+              </form>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-primary" width="100px" (click)="clean()">clean</button>
+          </div>
+        </div>
+      </div>
+  </div>
+
+</div>
+
+

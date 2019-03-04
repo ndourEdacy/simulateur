@@ -1,0 +1,112 @@
+<div class="container positionContainer" >
+    <div class="row">
+        <div class="col-sm-6">
+          <div class="card " >
+            <div class="card-body taillDiv1">
+                <form>
+                    <div class="form-group col-md-4">
+                      <label for="inputState">Type de placement</label>
+                      <select id="inputState" class="form-control" [(ngModel)]="typePlacement.typePlacement" name="typePlacement" (change)="onChangePlacement($event.target.value)">
+                        <option value="quietude" selected>Quietude</option>
+                        <option value="optimum">Optimum</option>
+                        <option value="cumule">Combinaison</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Maturite du placement</label>
+                        <input class="form-control" id="formGroupExampleInput" placeholder="Donner la maturite du placement" [(ngModel)]="nombreDeMoi" name="nombreDeMoi" >
+                      </div>
+                    <div class="form-group">
+                      <label for="formGroupExampleInput">Versement mensuel</label>
+                      <input class="form-control" id="formGroupExampleInput" placeholder="Donner le montant a verser" [(ngModel)]="montantPlacement" name="montantPlacement">
+                    </div>
+                    <div class="form-group">
+                        <label for="disabledTextInput">Rendement</label>
+                        <input type="number" id="disabledTextInput" class="form-control"  [(ngModel)]="typePlacement.pourcentageRendement" name="pourcentageRendement"  >
+                      </div>
+
+                  </form>
+            </div>
+            <div class="card-footer">
+              <Button class="btn btn-primary" (click)="calculMontant()">Simuler</Button>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="card ">
+            <div class="card-body taillDiv1">
+                <form>
+
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Montant total versé</label>
+                        <input class="form-control" id="formGroupExampleInput" placeholder="Donner la maturite du placement" [(ngModel)]="montantTotalPlacement" name="montantTotalPlacement" disabled>
+                    </div>
+                    <div class="form-group">
+                      <label for="formGroupExampleInput">Montant espéré</label>
+                      <input class="form-control" id="formGroupExampleInput" placeholder="Donner le montant a verser" [(ngModel)]="montantEspere" name="montantEspere" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="disabledTextInput">Gain espéré</label>
+                        <input type="number" id="disabledTextInput" class="form-control" [(ngModel)]="gainEspere" name="gainEspere" disabled >
+                     </div>
+
+                  </form>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-primary" width="100px" (click)="clean()">clean</button>
+            </div>
+          </div>
+        </div>
+    </div>
+ <div class="row" style="margin-top: 10px;">
+  <div class="col-sm-6 md-4" [hidden]="iscombinaison">
+    <div class="card">
+      <div class="card-body" >
+          <form>
+              <div class="form-group col-md-4">
+                <label for="inputState">Type de placement</label>
+                <select id="inputState" class="form-control" disabled>
+
+                  <option value="optimum" selected> Optimum</option>
+
+                </select>
+              </div>
+              <div class="form-group">
+                  <label for="formGroupExampleInput">Maturite du placement</label>
+                  <input class="form-control" id="formGroupExampleInput" placeholder="Donner la maturite du placement" #opt (keyup)="getMaturiteOptimum(opt.value)">
+                </div>
+              <div class="form-group">
+                <label for="formGroupExampleInput">Versement mensuel</label>
+                <input class="form-control" id="formGroupExampleInput" placeholder="Donner le montant a verser" #opt (keyup)="getMontantPlacementOptimum(opt.value)">
+              </div>
+              <div class="form-group">
+                  <label for="disabledTextInput">pourcentage Rendement Optimum</label>
+                  <input type="number" id="disabledTextInput" class="form-control"  [(ngModel)]="pourcentageRendementOptimum" name="pourcentageRendementOptimum" disabled >
+                </div>
+
+            </form>
+      </div>
+    </div>
+  </div>
+ </div>
+    <!-- <div class="row" style="margin-top:25px; ">
+      <div class="col-md-12">
+          <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                    <canvas baseChart
+                      [data]="pieChartData"
+                      [labels]="pieChartLabels"
+                      [chartType]="pieChartType"
+                      [options]="pieChartOptions"
+                      (chartHover)="chartHovered($event)"
+                      (chartClick)="chartClicked($event)">
+                    </canvas>
+                </div>
+              </div>
+            </div>
+      </div>
+    </div> -->
+</div>
+
+
