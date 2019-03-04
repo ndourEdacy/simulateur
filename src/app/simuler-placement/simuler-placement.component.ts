@@ -101,23 +101,26 @@ export class SimulerPlacementComponent implements OnInit {
       this.montantTotalPlacement = this.montantPlacement * this.nombreDeMoi ;
 
       if ( this.typePlacement.typePlacement === 'cumule' ) {
-        this.montantEspere = this.montantPlacement * this.calculSommeMontant();
+        this.montantEspere = this.calculSommeMontant();
       }
       else {
-        this.montantEspere = this.montantPlacement *  this.calculSommeMontant();
+        this.montantEspere = this.calculSommeMontant();
 
       }
-      this.gainEspere   = this.montantEspere - this.montantTotalPlacement ;
+     this.gainEspere   = this.montantEspere - this.montantTotalPlacement ;
 
       //this.getData();
     }
     public calculSommeMontant() {
-      let som = 0 ;
-      const val = 1 + (  this.typePlacement.pourcentageRendement / 100 );
-      for ( let i = 1 ; i <= this.nombreDeMoi ; i++) {
-        som +=   Math.pow( val, i );
-      }
-      return som;
+        let som = 0 ;
+        const val1 = 1 / 12;
+        const val2 = 1 + (  this.typePlacement.pourcentageRendement / 100 );
+        const val = Math.pow(val2, val1);
+        console.log(val)
+        for ( let i = 1 ; i <= this.nombreDeMoi ; i++) {
+           som +=   Math.pow( val, i );
+        }
+        return Math.ceil( this.montantPlacement *  som);
     }
 
 }

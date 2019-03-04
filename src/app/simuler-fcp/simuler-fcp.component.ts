@@ -155,7 +155,7 @@ export class SimulerFcpComponent implements OnInit {
  }
  public async calculMontantEcheanceUnique() {
 
-        this.montantVersementEcheanceUnique = this.versementUnique * Math.pow( 1 + this.fcp.tauxAnnuel / 100, this.maturite );
+        this.montantVersementEcheanceUnique = this.versementUnique * Math.pow( 1 + (this.fcp.tauxAnnuel / 100), this.maturite );
 
         this.montantTotalEcheance =  this.montantVersementEcheanceUnique + this.montantVersementEcheancePeriodique;
  }
@@ -166,7 +166,10 @@ export class SimulerFcpComponent implements OnInit {
 
  public calculSommeMontant() {
    let som = 0 ;
-   const val = 1 + (  this.fcp.tauxMensuel / 100 );
+   const val1 = 1 / 12;
+   const val2 = 1 + (  this.fcp.tauxMensuel / 100 );
+   const val = Math.pow(val2, val1);
+
    for ( let i = 1 ; i <= this.maturite ; i++) {
      som +=   Math.pow( val, i );
    }

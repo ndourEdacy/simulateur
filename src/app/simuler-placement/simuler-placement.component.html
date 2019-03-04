@@ -5,7 +5,7 @@
             <div class="card-body taillDiv1">
                 <form>
                     <div class="form-group col-md-4">
-                      <label for="inputState">Type de placement</label>
+                      <label for="inputState">Choix du produit</label>
                       <select id="inputState" class="form-control" [(ngModel)]="typePlacement.typePlacement" name="typePlacement" (change)="onChangePlacement($event.target.value)">
                         <option value="quietude" selected>Quietude</option>
                         <option value="optimum">Optimum</option>
@@ -13,11 +13,11 @@
                       </select>
                     </div>
                     <div class="form-group">
-                        <label for="formGroupExampleInput">Maturite du placement ( en nombre de mois°</label>
+                        <label for="formGroupExampleInput">Maturite du placement ( en nombre de mois)</label>
                         <input class="form-control" id="formGroupExampleInput" placeholder="Donner la maturite du placement" [(ngModel)]="nombreDeMoi" name="nombreDeMoi" >
                       </div>
                     <div class="form-group">
-                      <label for="formGroupExampleInput">Versement mensuel en fcfa</label>
+                      <label for="formGroupExampleInput">Versement mensuel (fcfa)</label>
                       <input class="form-control" id="formGroupExampleInput" placeholder="Donner le montant a verser" [(ngModel)]="montantPlacement" name="montantPlacement">
                     </div>
                     <div class="form-group">
