@@ -13,15 +13,15 @@
                       </select>
                     </div>
                     <div class="form-group">
-                        <label for="formGroupExampleInput">Maturite du placement</label>
+                        <label for="formGroupExampleInput">Maturite du placement ( en nombre de mois°</label>
                         <input class="form-control" id="formGroupExampleInput" placeholder="Donner la maturite du placement" [(ngModel)]="nombreDeMoi" name="nombreDeMoi" >
                       </div>
                     <div class="form-group">
-                      <label for="formGroupExampleInput">Versement mensuel</label>
+                      <label for="formGroupExampleInput">Versement mensuel en fcfa</label>
                       <input class="form-control" id="formGroupExampleInput" placeholder="Donner le montant a verser" [(ngModel)]="montantPlacement" name="montantPlacement">
                     </div>
                     <div class="form-group">
-                        <label for="disabledTextInput">Rendement</label>
+                        <label for="disabledTextInput">Objectif de rendement annuel (%)</label>
                         <input type="number" id="disabledTextInput" class="form-control"  [(ngModel)]="typePlacement.pourcentageRendement" name="pourcentageRendement"  >
                       </div>
 
@@ -38,15 +38,15 @@
                 <form>
 
                     <div class="form-group">
-                        <label for="formGroupExampleInput">Montant total versé</label>
+                        <label for="formGroupExampleInput">Montant total versé (fcfa)</label>
                         <input class="form-control" id="formGroupExampleInput" placeholder="Donner la maturite du placement" [(ngModel)]="montantTotalPlacement" name="montantTotalPlacement" disabled>
                     </div>
                     <div class="form-group">
-                      <label for="formGroupExampleInput">Montant espéré</label>
+                      <label for="formGroupExampleInput">Montant espéré (fcfa)</label>
                       <input class="form-control" id="formGroupExampleInput" placeholder="Donner le montant a verser" [(ngModel)]="montantEspere" name="montantEspere" disabled>
                     </div>
                     <div class="form-group">
-                        <label for="disabledTextInput">Gain espéré</label>
+                        <label for="disabledTextInput">Gain espéré (fcfa)</label>
                         <input type="number" id="disabledTextInput" class="form-control" [(ngModel)]="gainEspere" name="gainEspere" disabled >
                      </div>
 

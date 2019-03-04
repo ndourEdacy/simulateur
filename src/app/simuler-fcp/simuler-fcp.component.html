@@ -31,28 +31,28 @@
                         <input class="form-control" id="formGroupExampleInput"  [(ngModel)]="maturite" name="maturite">
                     </div>
                       <div class="form-group" [hidden]="isMEUInput">
-                        <label for="formGroupExampleInput">Montant a Echeance unique</label>
+                        <label for="formGroupExampleInput">Montant a Echeance unique (fcfa)</label>
                         <input class="form-control" id="formGroupExampleInput" placeholder="Donner la maturite du placement"
                                [(ngModel)]="montantVersementEcheanceUnique" name="montantVersementEcheanceUnique"
                               >
                     </div>
 
                     <div class="form-group" [hidden]="isMEPInput">
-                      <label for="formGroupExampleInput">Montant  a Echeance Periodique</label>
+                      <label for="formGroupExampleInput">Montant  a Echeance Periodique (fcfa)</label>
                       <input class="form-control" id="formGroupExampleInput" placeholder="Donner la maturite du placement"
                             [(ngModel)]="montantVersementEcheancePeriodique" name="montantVersementEcheancePeriodique" >
 
 
                   </div>
                     <div class="form-group" [hidden]="isVUInput">
-                      <label for="formGroupExampleInput">Versement unique</label>
+                      <label for="formGroupExampleInput">Versement unique (fcfa)</label>
                       <input class="form-control" id="formGroupExampleInput" [disabled]="activeInputCotisation"
                              [(ngModel)]="versementUnique"  name="versementUnique">
 
 
                   </div>
                   <div class="form-group" [hidden]="isVPInput">
-                    <label for="formGroupExampleInput">Versement Periodique</label>
+                    <label for="formGroupExampleInput">Versement Periodique (fcfa)</label>
                     <input class="form-control" id="formGroupExampleInput" placeholder="Donner le montant a verser" [disabled]="activeInputCotisation"
                           [(ngModel)]="versementPeriodique"  name="versementPeriodique">
 
@@ -81,14 +81,14 @@
             <form>
 
               <div class="form-group" [hidden]="idMEUOutput">
-                  <label for="formGroupExampleInput">Montant a Echeance unique</label>
+                  <label for="formGroupExampleInput">Montant a Echeance unique (fcfa)</label>
                   <input class="form-control" id="formGroupExampleInput" placeholder="Donner la maturite du placement"
                         [(ngModel)]="montantVersementEcheanceUnique" name="montantVersementEcheanceUnique" disabled
                         >
               </div>
 
               <div class="form-group" [hidden]="idMEUOutput">
-                <label for="formGroupExampleInput">Montant  a Echeance Periodique</label>
+                <label for="formGroupExampleInput">Montant  a Echeance Periodique (fcfa)</label>
                 <input class="form-control" id="formGroupExampleInput"
                       [(ngModel)]="montantVersementEcheancePeriodique" name="montantVersementEcheancePeriodique" [disabled]="ish1">
 
@@ -96,14 +96,14 @@
              </div>
 
              <div class="form-group" [hidden]="idMEUOutput">
-              <label for="formGroupExampleInput">Montant Total a Echeance</label>
+              <label for="formGroupExampleInput">Montant Total a Echeance (fcfa)</label>
               <input class="form-control" id="formGroupExampleInput" placeholder="Donner la maturite du placement" [(ngModel)]="montantTotalEcheance" name="montantTotalEcheance" disabled>
 
 
             </div>
 
               <div class="form-group" [hidden]="isVUOutput">
-                <label for="formGroupExampleInput">Versement unique</label>
+                <label for="formGroupExampleInput">Versement unique (fcfa)</label>
                 <input class="form-control" id="formGroupExampleInput" placeholder="Donner le montant a verser" disabled
 
                       [(ngModel)]="versementUnique"  name="versementUnique">
@@ -111,7 +111,7 @@
 
             </div>
             <div class="form-group" [hidden]="isVPOutput">
-              <label for="formGroupExampleInput">Versement Periodique</label>
+              <label for="formGroupExampleInput">Versement Periodique (fcfa)</label>
               <input class="form-control" id="formGroupExampleInput" placeholder="Donner le montant a verser" disabled
                     [(ngModel)]="versementPeriodique"  name="versementPeriodique">
 

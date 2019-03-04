@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 export class SimulerPlacementComponent implements OnInit {
   nombreDeMoi = 24;
   montantTotalPlacement = 0;
-  montantPlacement = 0;
+  montantPlacement = 100000;
   montantPlacementOpti = 0;
   montantEspere = 0;
   gainEspere = 0;
@@ -51,7 +51,7 @@ export class SimulerPlacementComponent implements OnInit {
       else if ( even === 'cumule') {
         this.iscombinaison = false ;
       }
-      this.calculMontant();
+
     }
 
    public  getMontantPlacement( val ) {
@@ -79,19 +79,7 @@ export class SimulerPlacementComponent implements OnInit {
       console.log( val );
       this.calculMontant();
     }
-   public  calculMontant() {
-      this.montantTotalPlacement = this.montantPlacement * this.nombreDeMoi ;
 
-      if ( this.typePlacement.typePlacement === 'cumule' ) {
-        this.gainEspere = this.montantTotalPlacement * ( this.pourcentageRendementOptimum / 100 + this.pourcentageRendementQuitude / 100 ) ;
-      }
-      else {
-        this.gainEspere = this.montantTotalPlacement * this.typePlacement.pourcentageRendement / 100;
-      }
-      this.montantEspere = this.montantTotalPlacement + this.gainEspere ;
-
-      //this.getData();
-    }
 
     public getData() {
       for ( let i = 1 ; i <= this.nombreDeMoi ; i++) {
@@ -108,6 +96,28 @@ export class SimulerPlacementComponent implements OnInit {
       this.gainEspere  = 0 ;
       this.montantEspere = 0 ;
 
+    }
+    public  calculMontant() {
+      this.montantTotalPlacement = this.montantPlacement * this.nombreDeMoi ;
+
+      if ( this.typePlacement.typePlacement === 'cumule' ) {
+        this.montantEspere = this.montantPlacement * this.calculSommeMontant();
+      }
+      else {
+        this.montantEspere = this.montantPlacement *  this.calculSommeMontant();
+
+      }
+      this.gainEspere   = this.montantEspere - this.montantTotalPlacement ;
+
+      //this.getData();
+    }
+    public calculSommeMontant() {
+      let som = 0 ;
+      const val = 1 + (  this.typePlacement.pourcentageRendement / 100 );
+      for ( let i = 1 ; i <= this.nombreDeMoi ; i++) {
+        som +=   Math.pow( val, i );
+      }
+      return som;
     }
 
 }

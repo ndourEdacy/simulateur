@@ -17,17 +17,17 @@
                         <input class="form-control" id="formGroupExampleInput" placeholder="Donner la maturite du placement" [(ngModel)]="maturite" name="maturite">
                     </div>
                     <div class="form-group" [hidden]="isVEinput">
-                      <label for="formGroupExampleInput">VALEUR  A L'ECHEANCE VOULUE</label>
+                      <label for="formGroupExampleInput">VALEUR  A L'ECHEANCE VOULUE (fcfa)</label>
                       <input class="form-control" id="formGroupExampleInput" placeholder="Donner la maturite du placement" [(ngModel)]="valeurEcheanceVoulue" name="valeurEcheanceVoulue">
                    </div>
                     <div class="form-group" [hidden]="isHypothese3">
-                      <label for="formGroupExampleInput">Montant initial a investir</label>
+                      <label for="formGroupExampleInput">Montant initial a investir (fcfa)</label>
                       <input class="form-control" id="formGroupExampleInput" placeholder="Donner le montant a verser" [(ngModel)]="montantInitial"  name="montantInitial">
 
 
                     </div>
                     <div class="form-group" [hidden]="isCMInput">
-                      <label for="formGroupExampleInput">Cotisation mensuelle</label>
+                      <label for="formGroupExampleInput">Cotisation mensuelle (fcfa)</label>
                       <input class="form-control" id="formGroupExampleInput" placeholder="Donner le montant a verser"  [(ngModel)]="cotisationMensuel"  name="cotisationMensuel">
 
                     </div>
@@ -55,18 +55,18 @@
           <div class="card-body taillediv">
               <form>
                 <div class="form-group" [hidden]="isCMOutPut">
-                  <label for="formGroupExampleInput">La somme à cotiser par mois</label>
+                  <label for="formGroupExampleInput">La somme à cotiser par mois (fcfa)</label>
                   <input class="form-control" id="formGroupExampleInput" placeholder="Donner le montant a verser"  [(ngModel)]="cotisationMensuel"  name="cotisationMensuel" disabled>
 
 
                 </div>
                   <div class="form-group">
-                      <label for="formGroupExampleInput">Montant Cotisation a Echeance</label>
+                      <label for="formGroupExampleInput">Montant Cotisation a Echeance (fcfa)</label>
                       <input class="form-control" id="formGroupExampleInput" placeholder="Donner la maturite du placement" [(ngModel)]="valeurCotisationEcheance" name="valeurCotisationEcheance" disabled>
                   </div>
 
                   <div class="form-group" [hidden]="isVEOutput">
-                    <label for="formGroupExampleInput">Montant à l'écheance voulue</label>
+                    <label for="formGroupExampleInput">Montant à l'écheance voulue (fcfa)</label>
                     <input class="form-control" id="formGroupExampleInput" placeholder="Donner la maturite du placement" [(ngModel)]="valeurEcheanceVoulue" name="valeurEcheanceVoulue" [disabled]="ish1" >
                  </div>
 
