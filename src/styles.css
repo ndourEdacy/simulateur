@@ -15,3 +15,6 @@ body {
 .positionContainer {
   margin-top: 10%;
 }
+.btn {
+  width: 200px !important;
+}

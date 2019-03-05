@@ -21,7 +21,7 @@
 
                           <option value="sommeEcheance" selected>Somme a l'echeance</option>
                           <option value="sommeInvestir">Somme a investir</option>
-                          <option value="sommeCautiser">Somme a cotiser</option>
+                          <!-- <option value="sommeCautiser">Somme a cotiser</option> -->
 
                         </select>
                       </div>
@@ -70,7 +70,7 @@
 
             </form>
           </div>
-          <div class="card-footer">
+          <div class="card-footer text-center">
             <Button class="btn btn-primary" (click)="!isVPInput ? calculMontantEcheanceParMois():calculMontantAInvestirParMois()">Simuler</Button>
           </div>
         </div>
@@ -120,7 +120,7 @@
 
           </form>
           </div>
-          <div class="card-footer">
+          <div class="card-footer text-center">
             <button class="btn btn-primary" width="100px" (click)="clean()">clean</button>
           </div>
         </div>

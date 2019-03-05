@@ -27,7 +27,7 @@
 
                   </form>
             </div>
-            <div class="card-footer" >
+            <div class="card-footer text-center" >
               <Button class="btn btn-primary" (click)="!iscombinaison ? calculMontantComBinaisonPlacement():calculMontant()" >Simuler</Button>
             </div>
           </div>
@@ -49,11 +49,16 @@
                         <label for="disabledTextInput">Gain espéré (fcfa)</label>
                         <input type="number" id="disabledTextInput" class="form-control" [(ngModel)]="gainEspere" name="gainEspere" disabled >
                      </div>
+                     <div class="form-group">
+                      <label for="disabledTextInput">Rendement (%)</label>
+                      <input type="number" id="disabledTextInput" class="form-control" [(ngModel)]="rendemantObtenue" name="rendemantObtenue" disabled >
+                   </div>
+
 
                   </form>
             </div>
-            <div class="card-footer">
-              <button class="btn btn-primary" width="100px" (click)="clean()">clean</button>
+            <div class="card-footer text-center">
+              <button class="btn btn-primary" (click)="clean()">clean</button>
             </div>
           </div>
         </div>
@@ -62,7 +67,7 @@
             <div class="card-body taillDiv1" >
                 <form>
                     <div class="form-group col-md-4">
-                      <label for="inputState">Type de placement</label>
+                      <label for="inputState">Coix produit</label>
                       <select id="inputState" class="form-control" disabled>
 
                         <option value="optimum" selected> Optimum</option>
@@ -79,7 +84,7 @@
                     </div>
                     <div class="form-group">
                         <label for="disabledTextInput">pourcentage Rendement Optimum</label>
-                        <input type="number" id="disabledTextInput" class="form-control"  [(ngModel)]="pourcentageRendementOptimum" name="pourcentageRendementOptimum" disabled >
+                        <input type="number" id="disabledTextInput" class="form-control"  [(ngModel)]="pourcentageRendementOptimum" name="pourcentageRendementOptimum"  >
                       </div>
 
                   </form>

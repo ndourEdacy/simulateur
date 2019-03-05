@@ -84,13 +84,13 @@ export class SimulerEpargneDiasporaComponent implements OnInit {
 
   }
   public calculMontantEcheanceParMois() {
-     this.valeurEcheanceVoulue =  this.cotisationMensuel * this.calculSommeMontant();
+     this.valeurEcheanceVoulue = Math.trunc( this.cotisationMensuel * this.calculSommeMontant());
      this.valeurCotisationEcheance = this.cotisationMensuel * this.maturite ;
 
   }
 
   public calculMontantAInvestirParMois() {
-    this.cotisationMensuel = this.valeurEcheanceVoulue / this.calculSommeMontant();
+    this.cotisationMensuel =  Math.trunc(  this.valeurEcheanceVoulue / this.calculSommeMontant() );
     this.valeurCotisationEcheance =   this.cotisationMensuel * this.maturite ;
 
   }
@@ -104,6 +104,8 @@ export class SimulerEpargneDiasporaComponent implements OnInit {
 
   public calculSommeMontant() {
     let som = 0 ;
+    // const val1 = 1 / 12;
+    // const val2 = Math.pow(this.val, val1);
     for ( let i = 1 ; i <= this.maturite ; i++) {
       som +=   (Math.pow( this.val, i ));
     }

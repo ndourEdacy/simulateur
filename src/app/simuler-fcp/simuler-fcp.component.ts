@@ -142,36 +142,41 @@ export class SimulerFcpComponent implements OnInit {
     console.log(event.value);
   }
   public calculMontantEcheanceParMois() {
-    this.montantVersementEcheancePeriodique =  this.versementPeriodique * this.calculSommeMontant();
+    this.montantVersementEcheancePeriodique =  Math.trunc(this.versementPeriodique * this.calculSommeMontant());
     //this.valeurCotisationEcheance = this.cotisationMensuel * this.maturite ;
     this.calculMontantEcheanceUnique();
       console.log('calculMontantEcheanceParMois');
  }
 
  public calculMontantAInvestirParMois() {
-   this.versementPeriodique = this.montantVersementEcheancePeriodique / this.calculSommeMontant();
+   this.versementPeriodique = Math.trunc(this.montantVersementEcheancePeriodique / this.calculSommeMontant());
    this.calculMontantAInvestirUnique();
 
  }
  public async calculMontantEcheanceUnique() {
-
-        this.montantVersementEcheanceUnique = this.versementUnique * Math.pow( 1 + (this.fcp.tauxAnnuel / 100), this.maturite );
+      const val1 = 1 / 12;
+      const val2 = 1 + (  this.fcp.tauxAnnuel / 100 );
+      const val = Math.pow(val2, val1);
+        this.montantVersementEcheanceUnique = Math.trunc(this.versementUnique * Math.pow( val, this.maturite ));
 
         this.montantTotalEcheance =  this.montantVersementEcheanceUnique + this.montantVersementEcheancePeriodique;
  }
 
  public calculMontantAInvestirUnique() {
-   this.versementUnique = this.montantVersementEcheanceUnique /  Math.pow( 1 +  this.fcp.tauxAnnuel / 100, this.maturite );
+    const val1 = 1 / 12;
+    const val2 = 1 + (  this.fcp.tauxAnnuel / 100 );
+    const val = Math.pow(val2, val1);
+    this.versementUnique = Math.trunc(this.montantVersementEcheanceUnique /  Math.pow( val, this.maturite ));
  }
 
  public calculSommeMontant() {
    let som = 0 ;
    const val1 = 1 / 12;
    const val2 = 1 + (  this.fcp.tauxMensuel / 100 );
-   const val = Math.pow(val2, val1);
+   //const val = Math.pow(val2, val1);
 
    for ( let i = 1 ; i <= this.maturite ; i++) {
-     som +=   Math.pow( val, i );
+     som +=   Math.pow( val2, i );
    }
    return som;
  }
