@@ -7,7 +7,7 @@
                     <div class="form-group col-md-4">
                       <label for="inputState">Choix du produit</label>
                       <select id="inputState" class="form-control" [(ngModel)]="typePlacement.typePlacement" name="typePlacement" (change)="onChangePlacement($event.target.value)">
-                        <option value="quietude" selected>Quietude</option>
+                      <option value="quietude" [selected]="!iscombinaison">Quietude</option>
                         <option value="optimum">Optimum</option>
                         <option value="cumule">Combinaison</option>
                       </select>
@@ -27,12 +27,12 @@
 
                   </form>
             </div>
-            <div class="card-footer">
-              <Button class="btn btn-primary" (click)="calculMontant()">Simuler</Button>
+            <div class="card-footer" >
+              <Button class="btn btn-primary" (click)="!iscombinaison ? calculMontantComBinaisonPlacement():calculMontant()" >Simuler</Button>
             </div>
           </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-6" [hidden]="!iscombinaison">
           <div class="card ">
             <div class="card-body taillDiv1">
                 <form>
@@ -57,56 +57,79 @@
             </div>
           </div>
         </div>
-    </div>
- <div class="row" style="margin-top: 10px;">
-  <div class="col-sm-6 md-4" [hidden]="iscombinaison">
-    <div class="card">
-      <div class="card-body" >
-          <form>
-              <div class="form-group col-md-4">
-                <label for="inputState">Type de placement</label>
-                <select id="inputState" class="form-control" disabled>
+        <div class="col-sm-6 md-4" [hidden]="iscombinaison">
+          <div class="card">
+            <div class="card-body taillDiv1" >
+                <form>
+                    <div class="form-group col-md-4">
+                      <label for="inputState">Type de placement</label>
+                      <select id="inputState" class="form-control" disabled>
 
-                  <option value="optimum" selected> Optimum</option>
+                        <option value="optimum" selected> Optimum</option>
 
-                </select>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Maturite du placement</label>
+                        <input class="form-control" id="formGroupExampleInput" placeholder="Donner la maturite du placement" [(ngModel)]="maturiteOpti" name="maturiteOpti">
+                      </div>
+                    <div class="form-group">
+                      <label for="formGroupExampleInput">Versement mensuel</label>
+                      <input class="form-control" id="formGroupExampleInput" placeholder="Donner le montant a verser" [(ngModel)]="montantPlacementOpti" name="montantPlacementOpti">
+                    </div>
+                    <div class="form-group">
+                        <label for="disabledTextInput">pourcentage Rendement Optimum</label>
+                        <input type="number" id="disabledTextInput" class="form-control"  [(ngModel)]="pourcentageRendementOptimum" name="pourcentageRendementOptimum" disabled >
+                      </div>
+
+                  </form>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-primary" width="100px" (click)="clean()">clean</button>
               </div>
-              <div class="form-group">
-                  <label for="formGroupExampleInput">Maturite du placement</label>
-                  <input class="form-control" id="formGroupExampleInput" placeholder="Donner la maturite du placement" #opt (keyup)="getMaturiteOptimum(opt.value)">
-                </div>
-              <div class="form-group">
-                <label for="formGroupExampleInput">Versement mensuel</label>
-                <input class="form-control" id="formGroupExampleInput" placeholder="Donner le montant a verser" #opt (keyup)="getMontantPlacementOptimum(opt.value)">
-              </div>
-              <div class="form-group">
-                  <label for="disabledTextInput">pourcentage Rendement Optimum</label>
-                  <input type="number" id="disabledTextInput" class="form-control"  [(ngModel)]="pourcentageRendementOptimum" name="pourcentageRendementOptimum" disabled >
-                </div>
-
-            </form>
-      </div>
+          </div>
+        </div>
     </div>
-  </div>
- </div>
-    <!-- <div class="row" style="margin-top:25px; ">
+
+    <div class="row" style="margin-top:25px; " [hidden]="iscombinaison">
       <div class="col-md-12">
-          <div class="col-sm-6">
+
               <div class="card">
                 <div class="card-body">
-                    <canvas baseChart
+
+                    <table class="table table-hover" id="dev-table">
+                        <thead>
+                          <tr>
+
+                            <th>Montant total versé (fcfa)</th>
+                            <th>Montant espéré (fcfa)</th>
+                            <th>Gain espéré (fcfa)</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+
+                            <td>{{montantTotalPlacement | number}}</td>
+                            <td>{{montantCombinaisonEspere | number}}</td>
+                            <td>{{gainEspere | number}}</td>
+                          </tr>
+
+
+                        </tbody>
+                      </table>
+                    <!-- <canvas baseChart
                       [data]="pieChartData"
                       [labels]="pieChartLabels"
                       [chartType]="pieChartType"
                       [options]="pieChartOptions"
                       (chartHover)="chartHovered($event)"
                       (chartClick)="chartClicked($event)">
-                    </canvas>
-                </div>
+                    </canvas> -->
+
               </div>
             </div>
       </div>
-    </div> -->
+    </div>
 </div>
 
 

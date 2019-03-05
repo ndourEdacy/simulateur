@@ -9,7 +9,10 @@ export class SimulerPlacementComponent implements OnInit {
   montantTotalPlacement = 0;
   montantPlacement = 100000;
   montantPlacementOpti = 0;
+  maturiteOpti = 12;
+  montantOptiEspere = 0;
   montantEspere = 0;
+  montantCombinaisonEspere = 0;
   gainEspere = 0;
   iscombinaison = true ;
   pourcentageRendementQuitude = 5.00 ;
@@ -50,6 +53,7 @@ export class SimulerPlacementComponent implements OnInit {
       }
       else if ( even === 'cumule') {
         this.iscombinaison = false ;
+        this.typePlacement.pourcentageRendement = 5;
       }
 
     }
@@ -101,26 +105,35 @@ export class SimulerPlacementComponent implements OnInit {
       this.montantTotalPlacement = this.montantPlacement * this.nombreDeMoi ;
 
       if ( this.typePlacement.typePlacement === 'cumule' ) {
-        this.montantEspere = this.calculSommeMontant();
+        this.montantEspere =  this.montantPlacement * this.calculSommeMontant(this.typePlacement.pourcentageRendement, this.nombreDeMoi);
       }
       else {
-        this.montantEspere = this.calculSommeMontant();
+        this.montantEspere = Math.ceil( this.montantPlacement * this.calculSommeMontant(this.typePlacement.pourcentageRendement,this.nombreDeMoi));
 
       }
      this.gainEspere   = this.montantEspere - this.montantTotalPlacement ;
 
       //this.getData();
     }
-    public calculSommeMontant() {
+    public calculSommeMontant(taux,matu) {
         let som = 0 ;
         const val1 = 1 / 12;
-        const val2 = 1 + (  this.typePlacement.pourcentageRendement / 100 );
+        const val2 = 1 + (  taux / 100 );
         const val = Math.pow(val2, val1);
         console.log(val)
-        for ( let i = 1 ; i <= this.nombreDeMoi ; i++) {
+        for ( let i = 1 ; i <= matu ; i++) {
            som +=   Math.pow( val, i );
         }
-        return Math.ceil( this.montantPlacement *  som);
+        return  som;
     }
 
+    public calculMontantComBinaisonPlacement() {
+      console.log("calculMontantComBinaisonPlacement");
+      this.montantEspere = Math.ceil( this.montantPlacement * this.calculSommeMontant(this.typePlacement.pourcentageRendement,this.nombreDeMoi));
+
+      this.montantOptiEspere = Math.ceil( this.montantPlacementOpti * this.calculSommeMontant(this.typePlacement.pourcentageRendement,this.maturiteOpti));
+      this.montantTotalPlacement = this.montantPlacement * this.nombreDeMoi + this.montantPlacementOpti * this.maturiteOpti;
+      this.montantCombinaisonEspere =  this.montantEspere +  this.montantOptiEspere
+      this.gainEspere   = this.montantCombinaisonEspere - this.montantTotalPlacement ;
+    }
 }
