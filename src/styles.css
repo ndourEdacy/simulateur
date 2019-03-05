@@ -9,7 +9,7 @@ body {
   height: 520px !important;
 }
 .taillDiv1 {
-  height: 370px !important;
+  height: 450px !important;
 }
 
 .positionContainer {
@@ -17,4 +17,7 @@ body {
 }
 .btn {
   width: 200px !important;
+}
+.foot {
+  height: 60px !important;
 }

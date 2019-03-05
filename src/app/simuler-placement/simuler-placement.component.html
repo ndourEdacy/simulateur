@@ -17,8 +17,12 @@
                         <input class="form-control" id="formGroupExampleInput" placeholder="Donner la maturite du placement" [(ngModel)]="nombreDeMoi" name="nombreDeMoi" >
                       </div>
                     <div class="form-group">
+                      <label for="formGroupExampleInput">Versement Unique (fcfa)</label>
+                      <input type="number" class="form-control" id="formGroupExampleInput" placeholder="Donner le montant a verser" [(ngModel)]="montantUnique" name="montantUnique">
+                    </div>
+                    <div class="form-group">
                       <label for="formGroupExampleInput">Versement mensuel (fcfa)</label>
-                      <input class="form-control" id="formGroupExampleInput" placeholder="Donner le montant a verser" [(ngModel)]="montantPlacement" name="montantPlacement">
+                      <input  type="number" class="form-control" id="formGroupExampleInput" placeholder="Donner le montant a verser" [(ngModel)]="montantPlacement" name="montantPlacement">
                     </div>
                     <div class="form-group">
                         <label for="disabledTextInput">Objectif de rendement annuel (%)</label>
@@ -27,7 +31,7 @@
 
                   </form>
             </div>
-            <div class="card-footer text-center" >
+            <div class="card-footer text-center foot" >
               <Button class="btn btn-primary" (click)="!iscombinaison ? calculMontantComBinaisonPlacement():calculMontant()" >Simuler</Button>
             </div>
           </div>
@@ -42,23 +46,23 @@
                         <input class="form-control" id="formGroupExampleInput" placeholder="Donner la maturite du placement" [(ngModel)]="montantTotalPlacement" name="montantTotalPlacement" disabled>
                     </div>
                     <div class="form-group">
-                      <label for="formGroupExampleInput">Montant espéré (fcfa)</label>
+                      <label for="formGroupExampleInput">Montant espéré  a écheance (fcfa)</label>
                       <input class="form-control" id="formGroupExampleInput" placeholder="Donner le montant a verser" [(ngModel)]="montantEspere" name="montantEspere" disabled>
                     </div>
                     <div class="form-group">
-                        <label for="disabledTextInput">Gain espéré (fcfa)</label>
+                        <label for="disabledTextInput">Gain espéré  a écheance (fcfa)</label>
                         <input type="number" id="disabledTextInput" class="form-control" [(ngModel)]="gainEspere" name="gainEspere" disabled >
                      </div>
                      <div class="form-group">
-                      <label for="disabledTextInput">Rendement (%)</label>
+                      <label for="disabledTextInput">Rendement de l'investissement (%)</label>
                       <input type="number" id="disabledTextInput" class="form-control" [(ngModel)]="rendemantObtenue" name="rendemantObtenue" disabled >
                    </div>
 
 
                   </form>
             </div>
-            <div class="card-footer text-center">
-              <button class="btn btn-primary" (click)="clean()">clean</button>
+            <div class="card-footer text-center foot">
+              <!-- <button class="btn btn-primary" (click)="clean()">clean</button> -->
             </div>
           </div>
         </div>
@@ -67,7 +71,7 @@
             <div class="card-body taillDiv1" >
                 <form>
                     <div class="form-group col-md-4">
-                      <label for="inputState">Coix produit</label>
+                      <label for="inputState">Choix produit</label>
                       <select id="inputState" class="form-control" disabled>
 
                         <option value="optimum" selected> Optimum</option>
@@ -78,19 +82,23 @@
                         <label for="formGroupExampleInput">Maturite du placement</label>
                         <input class="form-control" id="formGroupExampleInput" placeholder="Donner la maturite du placement" [(ngModel)]="maturiteOpti" name="maturiteOpti">
                       </div>
+                      <div class="form-group">
+                        <label for="formGroupExampleInput">Versement Unique (fcfa)</label>
+                        <input type="number" class="form-control" id="formGroupExampleInput" placeholder="Donner le montant a verser" [(ngModel)]="montantUnique" name="montantUnique">
+                      </div>
                     <div class="form-group">
-                      <label for="formGroupExampleInput">Versement mensuel</label>
-                      <input class="form-control" id="formGroupExampleInput" placeholder="Donner le montant a verser" [(ngModel)]="montantPlacementOpti" name="montantPlacementOpti">
+                      <label for="formGroupExampleInput">Versement mensuel (fcfa)</label>
+                      <input type="number" class="form-control" id="formGroupExampleInput" placeholder="Donner le montant a verser" [(ngModel)]="montantPlacementOpti" name="montantPlacementOpti">
                     </div>
                     <div class="form-group">
-                        <label for="disabledTextInput">pourcentage Rendement Optimum</label>
+                        <label for="disabledTextInput">Objectif de rendement annuel (%)</label>
                         <input type="number" id="disabledTextInput" class="form-control"  [(ngModel)]="pourcentageRendementOptimum" name="pourcentageRendementOptimum"  >
                       </div>
 
                   </form>
             </div>
-            <div class="card-footer text-center">
-                <button class="btn btn-primary" width="100px" (click)="clean()">clean</button>
+            <div class="card-footer text-center foot">
+                <!-- <button class="btn btn-primary" width="100px" (click)="clean()">clean</button> -->
               </div>
           </div>
         </div>
@@ -107,8 +115,8 @@
                           <tr>
 
                             <th>Montant total versé (fcfa)</th>
-                            <th>Montant espéré (fcfa)</th>
-                            <th>Gain espéré (fcfa)</th>
+                            <th>Montant espéré  a écheance (fcfa)</th>
+                            <th>Gain espéré  a écheance (fcfa)</th>
                           </tr>
                         </thead>
                         <tbody>
