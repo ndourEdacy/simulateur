@@ -10,11 +10,13 @@ import { TypeSimulateurComponent } from './type-simulateur/type-simulateur.compo
 import { SimulerFcpComponent } from './simuler-fcp/simuler-fcp.component';
 import { SimulerEpargneDiasporaComponent } from './simuler-epargne-diaspora/simuler-epargne-diaspora.component';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
-import {MatSliderModule,MatFormFieldModule, MatInputModule, MatCardModule, MatIconModule, MatToolbarModule, MatButtonModule, MatSidenavModule, MatListModule} from '@angular/material';
+import {MatSliderModule,MatFormFieldModule, MatInputModule, MatCardModule, MatIconModule,
+        MatToolbarModule, MatButtonModule, MatSidenavModule, MatListModule} from '@angular/material';
 import { MatNativeDateModule } from '@angular/material/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
+import { MyCurrencyPipe } from './MyCurrencyPipe';
 const routes: Routes =[
   {
     path: 'simulateur',
@@ -50,7 +52,8 @@ const routes: Routes =[
     TypeSimulateurComponent,
     SimulerEpargneDiasporaComponent,
     SimulerFcpComponent,
-    MainNavComponent
+    MainNavComponent,
+    MyCurrencyPipe
   ],
   imports: [
     BrowserModule,

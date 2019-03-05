@@ -81,7 +81,10 @@ export class SimulerEpargneDiasporaComponent implements OnInit {
   }
 
   public clean() {
+    this.valeurCotisationEcheance = 0;
+    this.valeurEcheanceVoulue = 0;
 
+    this.montantTotalPlacement = 0;
   }
   public calculMontantEcheanceParMois() {
      this.valeurEcheanceVoulue = Math.trunc( this.cotisationMensuel * this.calculSommeMontant());

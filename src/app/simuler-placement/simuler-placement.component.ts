@@ -117,6 +117,7 @@ export class SimulerPlacementComponent implements OnInit {
       }
      this.gainEspere   = this.montantEspere - this.montantTotalPlacement ;
      this.rendemantObtenue = (this.gainEspere / this.montantTotalPlacement) * 100;
+     //console.log(Math.(this.rendemantObtenue))
 
     }
     public calculSommeMontant(taux , matu) {
