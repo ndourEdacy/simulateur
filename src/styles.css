@@ -21,3 +21,8 @@ body {
 .foot {
   height: 60px !important;
 }
+@media screen and (max-width: 992px) {
+  .positionContainer {
+    margin-top: 10px;
+  }
+}
