@@ -81,14 +81,14 @@
             <form>
 
               <div class="form-group" [hidden]="idMEUOutput">
-                  <label for="formGroupExampleInput">Montant a Echeance unique (fcfa)</label>
+                  <label for="formGroupExampleInput">Capitalisation du versement unique (fcfa)</label>
                   <input class="form-control" id="formGroupExampleInput" placeholder="Donner la maturite du placement"
                         [(ngModel)]="montantVersementEcheanceUnique" name="montantVersementEcheanceUnique" disabled
                         >
               </div>
 
               <div class="form-group" [hidden]="idMEUOutput">
-                <label for="formGroupExampleInput">Montant  a Echeance Periodique (fcfa)</label>
+                <label for="formGroupExampleInput">Capitalisation des versements Periodiques (fcfa)</label>
                 <input class="form-control" id="formGroupExampleInput"
                       [(ngModel)]="montantVersementEcheancePeriodique" name="montantVersementEcheancePeriodique" [disabled]="ish1">
 
