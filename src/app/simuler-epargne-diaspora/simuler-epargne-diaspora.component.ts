@@ -106,6 +106,9 @@ export class SimulerEpargneDiasporaComponent implements OnInit {
     const valco = this.calculMontantEcheanceUnique() /  Math.pow( val2, this.maturite );
     this.cotisationMensuel =  Math.trunc(  (this.valeurEcheanceVoulue - valco) / this.calculSommeMontant() );
     this.valeurCotisationEcheance =   this.cotisationMensuel * this.maturite + this.cotisationUnique;
+    this.gainEspere = this.valeurEcheanceVoulue - this.valeurCotisationEcheance ;
+    this.rendemantObtenue = (this.gainEspere / this.valeurCotisationEcheance) * 100 ;
+    this.rendemantObtenue1 = this.rendemantObtenue.toPrecision(3)
 
   }
   public calculMontantEcheanceUnique() {
