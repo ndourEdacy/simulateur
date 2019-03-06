@@ -115,8 +115,8 @@ export class SimulerPlacementComponent implements OnInit {
       }
       else {
         this.montantEspere = Math.trunc( this.montantPlacement
-                                        * this.calculSommeMontant(this.typePlacement.pourcentageRendement,this.nombreDeMoi))
-                            + this.calculMontantEspereUnique(this.typePlacement.pourcentageRendement,this.nombreDeMoi);
+                                        * this.calculSommeMontant(this.typePlacement.pourcentageRendement, this.nombreDeMoi))
+                            + this.calculMontantEspereUnique(this.typePlacement.pourcentageRendement, this.nombreDeMoi, this.montantUnique);
       }
      this.gainEspere   = this.montantEspere - this.montantTotalPlacement ;
      this.rendemantObtenue = (this.gainEspere / this.montantTotalPlacement) * 100 ;
