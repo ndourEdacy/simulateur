@@ -4,31 +4,36 @@
         <div class="card ">
           <div class="card-body taillediv" >
               <form>
-                  <div class="form-group col-md-4">
+                  <div class="form-group col-md-12">
                     <label for="inputState">Type de placement</label>
                     <select id="inputState" class="form-control" [(ngModel)]="hypothese" name="hypothese" (change)="onChangeHypothese($event.target.value)">
-                      <option value="h1" selected>hypothese 1</option>
-                      <option value="h2">hypothese 2</option>
-                      <option value="h3">hypothese 3</option>
+                      <option value="h1" selected>LE CLIENT FIXE SA COTISATION</option>
+                      <option value="h2">LE CLIENT FIXE LE MONTANT A ECHEANCE VOULU</option>
+                      <option value="h3">LE CLIENT FIXE  LE MONTANT A ECHEANCE VOULU ET VERSE UNE SOMME</option>
                     </select>
                     </div>
                     <div class="form-group">
                         <label for="formGroupExampleInput">Maturite de l'epargne (en nombre de mois)</label>
-                        <input class="form-control" id="formGroupExampleInput" placeholder="Donner la maturite du placement" [(ngModel)]="maturite" name="maturite">
+                        <input type="number" class="form-control" id="formGroupExampleInput" placeholder="Donner la maturite du placement" [(ngModel)]="maturite" name="maturite">
                     </div>
                     <div class="form-group" [hidden]="isVEinput">
-                      <label for="formGroupExampleInput">VALEUR  A L'ECHEANCE VOULUE (fcfa)</label>
+                      <label for="formGroupExampleInput">Montant espéré  a écheance (fcfa)</label>
                       <input class="form-control" id="formGroupExampleInput" placeholder="Donner la maturite du placement" [(ngModel)]="valeurEcheanceVoulue" name="valeurEcheanceVoulue">
                    </div>
                     <div class="form-group" [hidden]="isHypothese3">
                       <label for="formGroupExampleInput">Montant initial a investir (fcfa)</label>
-                      <input class="form-control" id="formGroupExampleInput" placeholder="Donner le montant a verser" [(ngModel)]="montantInitial"  name="montantInitial">
+                      <input  type="number" class="form-control" id="formGroupExampleInput" placeholder="Donner le montant a verser" [(ngModel)]="montantInitial"  name="montantInitial">
 
 
                     </div>
                     <div class="form-group" [hidden]="isCMInput">
-                      <label for="formGroupExampleInput">Cotisation mensuelle (fcfa)</label>
-                      <input class="form-control" id="formGroupExampleInput" placeholder="Donner le montant a verser"  [(ngModel)]="cotisationMensuel"  name="cotisationMensuel">
+                      <label for="formGroupExampleInput">Versement Unique (fcfa)</label>
+                      <input type="number" class="form-control" id="formGroupExampleInput" placeholder="Donner le montant a verser"  [(ngModel)]="cotisationUnique"  name="cotisationUnique">
+
+                    </div>
+                    <div class="form-group" [hidden]="isCMInput">
+                      <label for="formGroupExampleInput">Versement mensuel (fcfa)</label>
+                      <input type="number" class="form-control" id="formGroupExampleInput" placeholder="Donner le montant a verser"  [(ngModel)]="cotisationMensuel"  name="cotisationMensuel">
 
                     </div>
                     <div class="form-group">
@@ -55,22 +60,30 @@
           <div class="card-body taillediv">
               <form>
                 <div class="form-group" [hidden]="isCMOutPut">
-                  <label for="formGroupExampleInput">La somme à cotiser par mois (fcfa)</label>
-                  <input class="form-control" id="formGroupExampleInput" placeholder="Donner le montant a verser"  [(ngModel)]="cotisationMensuel"  name="cotisationMensuel" disabled>
+                  <label for="formGroupExampleInput">Versement mensuel (fcfa)</label>
+                  <input type="number" class="form-control" id="formGroupExampleInput" placeholder="Donner le montant a verser"  [(ngModel)]="cotisationMensuel"  name="cotisationMensuel" disabled>
 
 
                 </div>
                   <div class="form-group">
-                      <label for="formGroupExampleInput">Montant Cotisation a Echeance (fcfa)</label>
-                      <input class="form-control" id="formGroupExampleInput" placeholder="Donner la maturite du placement" [(ngModel)]="valeurCotisationEcheance" name="valeurCotisationEcheance" disabled>
+                      <label for="formGroupExampleInput">Montant total versé (fcfa)</label>
+                      <input type="number" class="form-control" id="formGroupExampleInput" placeholder="Donner la maturite du placement" [(ngModel)]="valeurCotisationEcheance" name="valeurCotisationEcheance" disabled>
                   </div>
 
                   <div class="form-group" [hidden]="isVEOutput">
-                    <label for="formGroupExampleInput">Montant à l'écheance voulue (fcfa)</label>
-                    <input class="form-control" id="formGroupExampleInput" placeholder="Donner la maturite du placement" [(ngModel)]="valeurEcheanceVoulue" name="valeurEcheanceVoulue" [disabled]="ish1" >
+                    <label for="formGroupExampleInput">Montant espéré  a écheance (fcfa)</label>
+                    <input type="number" class="form-control" id="formGroupExampleInput" placeholder="Donner la maturite du placement" [(ngModel)]="valeurEcheanceVoulue" name="valeurEcheanceVoulue" [disabled]="ish1" >
                  </div>
 
+                 <div class="form-group">
+                  <label for="disabledTextInput">Gain espéré  a écheance (fcfa)</label>
+                  <input type="number" id="disabledTextInput" class="form-control" [(ngModel)]="gainEspere" name="gainEspere" disabled >
+               </div>
+               <div class="form-group">
+                <label for="disabledTextInput">Rendement de l'investissement (%)</label>
+                <input type="number" id="disabledTextInput" class="form-control" [(ngModel)]="rendemantObtenue1 " name="rendemantObtenue1" disabled >
 
+             </div>
 
               </form>
           </div>
