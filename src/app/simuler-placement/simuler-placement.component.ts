@@ -6,20 +6,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SimulerPlacementComponent implements OnInit {
   nombreDeMoi = 24;
-  montantTotalPlacement = 0;
+  montantTotalPlacement:number = 0;
   montantPlacement: number = 100000;
   montantPlacementOpti = 0;
   maturiteOpti = 12;
   montantOptiEspere = 0;
   montantEspere = 0;
   montantCombinaisonEspere = 0;
-  gainEspere = 0;
+  gainEspere: number= 0;
   iscombinaison = true ;
   pourcentageRendementQuitude = 5.00 ;
   pourcentageRendementOptimum = 5.25 ;
-  rendemantObtenue = 0 ;
+  rendemantObtenue: number= 0 ;
+  rendemantObtenue1: string = '';
   montantUnique: number = 0 ;
-  montantUniqueOpti = 0 ;
+  montantUniqueOpti : number= 0 ;
   typePlacement = {
       'typePlacement': 'quietude',
       'pourcentageRendement': 5.00
@@ -118,7 +119,8 @@ export class SimulerPlacementComponent implements OnInit {
                             + this.calculMontantEspereUnique(this.typePlacement.pourcentageRendement,this.nombreDeMoi);
       }
      this.gainEspere   = this.montantEspere - this.montantTotalPlacement ;
-     this.rendemantObtenue = (this.gainEspere / this.montantTotalPlacement) * 100;
+     this.rendemantObtenue = (this.gainEspere / this.montantTotalPlacement) * 100 ;
+     this.rendemantObtenue1 = this.rendemantObtenue.toPrecision(3)
      //console.log(Math.(this.rendemantObtenue))
 
     }
@@ -133,21 +135,21 @@ export class SimulerPlacementComponent implements OnInit {
         }
         return  som;
     }
-     public calculMontantEspereUnique (taux , matu) {
+     public calculMontantEspereUnique (taux , matu , montant) {
       const val1 = 1 / 12;
       const val2 = 1 + ( taux / 100);
       const val = Math.pow(val2, val1);
-         return Math.trunc(this.montantUnique * Math.pow(val , matu));
+         return Math.trunc(montant* Math.pow(val , matu));
      }
     public calculMontantComBinaisonPlacement() {
       // console.log("calculMontantComBinaisonPlacement");
-      this.montantEspere = Math.trunc( this.montantPlacement
-                                        * this.calculSommeMontant(this.typePlacement.pourcentageRendement,this.nombreDeMoi))
-                                        +this.calculMontantEspereUnique(this.typePlacement.pourcentageRendement,this.nombreDeMoi);
+      this.montantEspere = Math.trunc(  this.montantPlacement
+                                        * this.calculSommeMontant(this.typePlacement.pourcentageRendement, this.nombreDeMoi))
+                                        + this.calculMontantEspereUnique(this.typePlacement.pourcentageRendement, this.nombreDeMoi,this.montantUnique);
 
       this.montantOptiEspere = Math.trunc( this.montantPlacementOpti
-                                          * this.calculSommeMontant(this.typePlacement.pourcentageRendement,this.maturiteOpti))
-                                          + this.calculMontantEspereUnique(this.typePlacement.pourcentageRendement,this.nombreDeMoi);
+                                          * this.calculSommeMontant(this.typePlacement.pourcentageRendement, this.maturiteOpti))
+                                          + this.calculMontantEspereUnique(this.typePlacement.pourcentageRendement, this.nombreDeMoi,this.montantUniqueOpti);
       this.montantTotalPlacement = this.montantPlacement * this.nombreDeMoi + this.montantPlacementOpti * this.maturiteOpti
                                    + this.montantUnique + this.montantUniqueOpti;
       this.montantCombinaisonEspere =  this.montantEspere +  this.montantOptiEspere;
