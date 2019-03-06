@@ -116,12 +116,13 @@ export class SimulerEpargneDiasporaComponent implements OnInit {
     this.cotisationMensuel =  Math.trunc(  this.valeurEcheanceVoulue / this.calculSommeMontant() );
     console.log(this.cotisationMensuel)
     this.valeurCotisationEcheance =   this.cotisationMensuel * this.maturite + this.cotisationUnique;
-    this.gainEspere = this.valeurEcheanceVoulue - this.valeurCotisationEcheance ;
+    // this.gainEspere = this.valeurEcheanceVoulue - this.valeurCotisationEcheance ;
 
     // this.rendemantObtenue = (this.gainEspere / this.valeurCotisationEcheance) * 100 ;
     // this.rendemantObtenue1 = this.rendemantObtenue.toPrecision(3)
 
   }
+
   public calculMontantEcheanceUnique() {
     const val1 = 1 / 12;
     const val = 1 + ( this.tauxAnnuel / 100 );
