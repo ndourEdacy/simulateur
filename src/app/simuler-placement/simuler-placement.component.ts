@@ -18,7 +18,7 @@ export class SimulerPlacementComponent implements OnInit {
   pourcentageRendementQuitude = 5.00 ;
   pourcentageRendementOptimum = 5.25 ;
   rendemantObtenue: number= 0 ;
-  rendemantObtenue1: string = '';
+  rendemantObtenue1: string = '0.0';
   montantUnique: number = 0 ;
   montantUniqueOpti : number= 0 ;
 
