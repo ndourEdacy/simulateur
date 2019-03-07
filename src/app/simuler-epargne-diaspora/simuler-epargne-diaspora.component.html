@@ -17,11 +17,11 @@
                         <input type="number" class="form-control" id="formGroupExampleInput" placeholder="Donner la maturite du placement" [(ngModel)]="maturite" name="maturite">
                     </div>
                     <div class="form-group" [hidden]="isVEinput">
-                      <label for="formGroupExampleInput">Montant espéré  a écheance (fcfa)</label>
+                      <label for="formGroupExampleInput">Montant espéré à écheance (fcfa)</label>
                       <input type="number" class="form-control" id="formGroupExampleInput" placeholder="Donner la maturite du placement" [(ngModel)]="valeurEcheanceVoulue" name="valeurEcheanceVoulue">
                    </div>
                     <div class="form-group" [hidden]="isHypothese3">
-                      <label for="formGroupExampleInput">Montant initial a investir (fcfa)</label>
+                      <label for="formGroupExampleInput">Montant initial à investir (fcfa)</label>
                       <input  type="number" class="form-control" id="formGroupExampleInput" placeholder="Donner le montant a verser" [(ngModel)]="cotisationUnique"  name="cotisationUnique">
 
 
@@ -60,14 +60,16 @@
           <div class="card-body taillediv">
               <form>
                 <div class="form-group" [hidden]="isCMOutPut">
-                  <label for="formGroupExampleInput">Versement mensuel (fcfa)</label>
+                  <label for="formGroupExampleInput"> Par versement mensuel (fcfa)</label>
                   <input type="number" class="form-control" id="formGroupExampleInput" placeholder="Donner le montant a verser"  [(ngModel)]="cotisationMensuel"  name="cotisationMensuel" disabled>
 
 
                 </div>
-
+                <div [hidden]="!isHypothese3 || isCMOutPut">
+                  <label class="text-center">Ou</label>
+                </div>
                 <div class="form-group" [hidden]="!isHypothese3 || isCMOutPut">
-                  <label for="formGroupExampleInput">Versement Unique (fcfa)</label>
+                  <label for="formGroupExampleInput">Par versement Unique (fcfa)</label>
                   <input type="number" class="form-control" id="formGroupExampleInput" placeholder="Donner le montant a verser" disabled [(ngModel)]="cotisationUnique"  name="cotisationUnique">
 
                 </div>
@@ -77,12 +79,12 @@
                   </div>
 
                   <div class="form-group" [hidden]="isVEOutput">
-                    <label for="formGroupExampleInput">Montant espéré  a écheance (fcfa)</label>
+                    <label for="formGroupExampleInput">Montant espéré à écheance (fcfa)</label>
                     <input type="number" class="form-control" id="formGroupExampleInput" placeholder="Donner la maturite du placement" [(ngModel)]="valeurEcheanceVoulue" name="valeurEcheanceVoulue" [disabled]="ish1" >
                  </div>
 
                  <div class="form-group" [hidden]="isVEOutput">
-                  <label for="disabledTextInput">Gain espéré  a écheance (fcfa)</label>
+                  <label for="disabledTextInput">Gain espéré  à écheance (fcfa)</label>
                   <input type="number" id="disabledTextInput" class="form-control" [(ngModel)]="gainEspere" name="gainEspere" disabled >
                </div>
                <div class="form-group" [hidden]="isVEOutput">

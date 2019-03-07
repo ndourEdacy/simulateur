@@ -99,7 +99,7 @@ export class SimulerEpargneDiasporaComponent implements OnInit {
      this.valeurCotisationEcheance = this.cotisationMensuel * this.maturite + this.cotisationUnique;
      this.gainEspere = this.valeurEcheanceVoulue - this.valeurCotisationEcheance ;
      this.rendemantObtenue = (this.gainEspere / this.valeurCotisationEcheance) * 100 ;
-     this.rendemantObtenue1 = this.rendemantObtenue.toPrecision(3)
+     this.rendemantObtenue1 = this.rendemantObtenue.toPrecision(3);
 
   }
 

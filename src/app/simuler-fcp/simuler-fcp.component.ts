@@ -12,7 +12,7 @@ export class SimulerFcpComponent implements OnInit {
   tauxAnnuel = 8;
   tauxMensuel = 0.64;
   versementUnique = 0;
-  versementPeriodique = 0;
+  versementPeriodique: number = 0;
   montantTotalEcheance = 0;
   montantVersementEcheancePeriodique = 0;
   montantVersementEcheanceUnique = 0;
@@ -21,8 +21,8 @@ export class SimulerFcpComponent implements OnInit {
   typeSimulation = 'sommeEcheance' ;
   fcp = {
     'typeFcp': 'fcpquietude',
-    'tauxAnnuel': 5.25 ,
-    'tauxMensuel': 0.4273
+    'tauxAnnuel': 5 ,
+    'tauxMensuel': 0.41
   };
   ish1 = true;
   activeInputCotisation = false;
@@ -46,7 +46,8 @@ export class SimulerFcpComponent implements OnInit {
    idMEPOutput = false ;
    isMEUInput = true;
    idMEUOutput = false ;
-
+   montantAversementPeriodique: string = '';
+   montantAversementUnique: string = '';
    get tickInterval(): number | 'auto' {
      return this.showTicks ? (this.autoTicks ? 'auto' : this._tickInterval) : 0;
    }
@@ -75,15 +76,15 @@ export class SimulerFcpComponent implements OnInit {
       this.idMEPOutput = true ;
       this.isMEUInput = false;
       this.idMEUOutput = true ;
-      if ( this.fcp.typeFcp === 'fcpquietude') {
-        this.fcp.tauxAnnuel = 5;
-        this.fcp.tauxMensuel = 0.41;
-      }
+      // if ( this.fcp.typeFcp === 'fcpquietude') {
+      //   this.fcp.tauxAnnuel = 5;
+      //   this.fcp.tauxMensuel = 0.41;
+      // }
     } else {
-      if ( this.fcp.typeFcp === 'fcpquietude') {
-        this.fcp.tauxAnnuel = 5.25;
-        this.fcp.tauxMensuel =  0.4273;
-      }
+      // if ( this.fcp.typeFcp === 'fcpquietude') {
+      //   this.fcp.tauxAnnuel = 5.25;
+      //   this.fcp.tauxMensuel =  0.4273;
+      // }
 
       this.ish1 = true;
       this.activeInputCotisation = false;
@@ -108,8 +109,8 @@ export class SimulerFcpComponent implements OnInit {
   }
   public onChangeFcp( even ) {
       if ( even === 'fcpquietude') {
-          this.fcp.tauxAnnuel = 5.25;
-          this.fcp.tauxMensuel = 0.4273;
+          this.fcp.tauxAnnuel = 5;
+          this.fcp.tauxMensuel = 0.41;
       }
       else if ( even === 'fcpavantage') {
         this.fcp.tauxAnnuel = 7 ;
@@ -121,7 +122,7 @@ export class SimulerFcpComponent implements OnInit {
       }
       else if ( even === 'fcpexpat') {
         this.fcp.tauxAnnuel = 5 ;
-        this.fcp.tauxMensuel = 0.417;
+        this.fcp.tauxMensuel = 0.41;
       }
       else if ( even === 'fcpcroissance') {
         this.fcp.tauxAnnuel = 10 ;
@@ -158,14 +159,17 @@ export class SimulerFcpComponent implements OnInit {
     console.log(event.value);
   }
   public calculMontantEcheanceParMois() {
-    this.montantVersementEcheancePeriodique =  Math.trunc(this.versementPeriodique * this.calculSommeMontant());
+    this.montantVersementEcheancePeriodique =  this.versementPeriodique * this.calculSommeMontant();
     //this.valeurCotisationEcheance = this.cotisationMensuel * this.maturite ;
+    this.montantAversementPeriodique =   this.montantVersementEcheancePeriodique.toFixed(2);
     this.calculMontantEcheanceUnique();
       console.log('calculMontantEcheanceParMois');
  }
 
  public calculMontantAInvestirParMois() {
-   this.versementPeriodique = Math.trunc(this.montantVersementEcheancePeriodique / this.calculSommeMontant());
+   this.versementPeriodique = this.montantVersementEcheanceUnique / this.calculSommeMontant() + 1;
+   this.montantAversementPeriodique = this.versementPeriodique.toFixed(1);
+   console.log(this.montantAversementPeriodique)
    this.calculMontantAInvestirUnique();
 
  }
@@ -182,7 +186,8 @@ export class SimulerFcpComponent implements OnInit {
     const val1 = 1 / 12;
     const val2 = 1 + (  this.fcp.tauxAnnuel / 100 );
     const val = Math.pow(val2, val1);
-    this.versementUnique = Math.trunc(this.montantVersementEcheanceUnique /  Math.pow( val, this.maturite ));
+    this.versementUnique = this.montantVersementEcheanceUnique /  Math.pow( val, this.maturite ) ;
+    this.montantAversementUnique =   this.versementUnique.toFixed(1)
  }
 
  public calculSommeMontant() {
