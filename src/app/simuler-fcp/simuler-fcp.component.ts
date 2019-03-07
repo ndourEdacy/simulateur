@@ -66,8 +66,7 @@ export class SimulerFcpComponent implements OnInit {
       this.activeInputCotisation = true;
       this.isSommeEcheance = true;
       this.ishiden = false;
-      this.fcp.tauxAnnuel = 5;
-      this.fcp.tauxMensuel = 0.41;
+
       this.isVUOutput = false;
       this.isVUInput = true;
       this.isVPInput = true ;
@@ -76,7 +75,16 @@ export class SimulerFcpComponent implements OnInit {
       this.idMEPOutput = true ;
       this.isMEUInput = false;
       this.idMEUOutput = true ;
+      if ( this.fcp.typeFcp === 'fcpquietude') {
+        this.fcp.tauxAnnuel = 5;
+        this.fcp.tauxMensuel = 0.41;
+      }
     } else {
+      if ( this.fcp.typeFcp === 'fcpquietude') {
+        this.fcp.tauxAnnuel = 5.25;
+        this.fcp.tauxMensuel =  0.4273;
+      }
+
       this.ish1 = true;
       this.activeInputCotisation = false;
       this.isSommeEcheance = false;
@@ -111,11 +119,19 @@ export class SimulerFcpComponent implements OnInit {
         this.fcp.tauxAnnuel = 8 ;
         this.fcp.tauxMensuel = 0.64;
       }
+      else if ( even === 'fcpexpat') {
+        this.fcp.tauxAnnuel = 5 ;
+        this.fcp.tauxMensuel = 0.417;
+      }
       else if ( even === 'fcpcroissance') {
         this.fcp.tauxAnnuel = 10 ;
         this.fcp.tauxMensuel = 0.80;
       }
-
+      else if ( even === 'fcpdiaspora' || even === 'fcpretraite' ) {
+        this.fcp.tauxAnnuel = 6 ;
+        this.fcp.tauxMensuel = 0.5;
+      }
+      this.clean();
   }
 
   public getMaturite( even ) {
@@ -157,9 +173,9 @@ export class SimulerFcpComponent implements OnInit {
       const val1 = 1 / 12;
       const val2 = 1 + (  this.fcp.tauxAnnuel / 100 );
       const val = Math.pow(val2, val1);
-        this.montantVersementEcheanceUnique = Math.trunc(this.versementUnique * Math.pow( val, this.maturite ));
+      this.montantVersementEcheanceUnique = Math.trunc(this.versementUnique * Math.pow( val, this.maturite ));
 
-        this.montantTotalEcheance =  this.montantVersementEcheanceUnique + this.montantVersementEcheancePeriodique;
+      this.montantTotalEcheance =  this.montantVersementEcheanceUnique + this.montantVersementEcheancePeriodique;
  }
 
  public calculMontantAInvestirUnique() {
