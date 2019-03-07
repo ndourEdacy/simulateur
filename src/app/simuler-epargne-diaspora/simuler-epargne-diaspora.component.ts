@@ -36,7 +36,13 @@ export class SimulerEpargneDiasporaComponent implements OnInit {
   valeurEcheanceUnique: number = 0;
   gainEspere = 0 ;
   rendemantObtenue: number= 0 ;
-  rendemantObtenue1: string = '';
+  rendemantObtenue1: string = '0.0';
+
+  cotisationMensuelAverse: string = '0.0';
+  cotisationUniqueAverse: string = '0.0';
+  valeurCotisationEcheanceVoulue: string = '0.0';
+  valeurEcheanceVoulue2: string = '0.0';
+  gainEspereVoulue: string = '0.0';
   get tickInterval(): number | 'auto' {
     return this.showTicks ? (this.autoTicks ? 'auto' : this._tickInterval) : 0;
   }
@@ -73,7 +79,7 @@ export class SimulerEpargneDiasporaComponent implements OnInit {
       this.isCMOutPut = true;
       this.isCMInput = false;
     }
-
+    this.clean();
   }
 
   public getMaturite( even ) {
@@ -91,13 +97,24 @@ export class SimulerEpargneDiasporaComponent implements OnInit {
     this.cotisationUnique = 0 ;
     this.gainEspere = 0 ;
     this.rendemantObtenue = 0;
-    this.rendemantObtenue1 = '';
+    this.rendemantObtenue1 = '0.0';
     this.montantTotalPlacement = 0;
+    this.cotisationMensuelAverse = '0.0';
+    this.cotisationUniqueAverse = '0.0';
+    this.valeurCotisationEcheanceVoulue = '0.0';
+    this.valeurEcheanceVoulue2 = '0.0';
+    this.gainEspereVoulue = '0.0';
   }
   public calculMontantEcheanceParMois() {
-     this.valeurEcheanceVoulue = Math.trunc( this.cotisationMensuel * this.calculSommeMontant(this.tauxAnnuel)) + this.calculMontantEcheanceUnique();
+     this.valeurEcheanceVoulue = this.cotisationMensuel * this.calculSommeMontant(this.tauxAnnuel) + this.calculMontantEcheanceUnique();
+     this.valeurEcheanceVoulue2 = this.valeurEcheanceVoulue.toFixed(1);
+
      this.valeurCotisationEcheance = this.cotisationMensuel * this.maturite + this.cotisationUnique;
+     this.valeurCotisationEcheanceVoulue =  this.valeurCotisationEcheance.toFixed(1);
+
      this.gainEspere = this.valeurEcheanceVoulue - this.valeurCotisationEcheance ;
+     this.gainEspereVoulue = this.gainEspere.toFixed(1);
+
      this.rendemantObtenue = (this.gainEspere / this.valeurCotisationEcheance) * 100 ;
      this.rendemantObtenue1 = this.rendemantObtenue.toPrecision(3);
 
@@ -107,21 +124,28 @@ export class SimulerEpargneDiasporaComponent implements OnInit {
 
     const val1 = 1 / 12;
     const val = 1 + ( this.tauxAnnuel / 100 );
-    const val2 = Math.pow(val, val1);
+    const val2 = Math.pow(val, val1) ;
     if ( this.hypothese !== 'h3') {
-      this.cotisationUnique = Math.trunc( this.valeurEcheanceVoulue /  Math.pow( val2, this.maturite ) );
+      this.cotisationUnique = this.valeurEcheanceVoulue /  Math.pow( val2, this.maturite ) ;
+      this.cotisationUniqueAverse =   this.cotisationUnique.toFixed(1);
 
     this.valeurEcheanceUnique = this.calculMontantEcheanceUnique();
-    // console.log(this.valeurEcheanceUnique)
-    this.cotisationMensuel =  Math.trunc(  this.valeurEcheanceVoulue / this.calculSommeMontant(this.tauxAnnuel) );
-    console.log('nnnnnnn')
+
+
+    this.cotisationMensuel =   this.valeurEcheanceVoulue / this.calculSommeMontant(this.tauxAnnuel);
+    this.cotisationMensuelAverse =  this.cotisationMensuel.toFixed(1);
+
     this.valeurCotisationEcheance =   this.cotisationMensuel * this.maturite + this.cotisationUnique;
+    this.valeurCotisationEcheanceVoulue =  this.valeurCotisationEcheance.toFixed(1);
+    } else {
+      this.calculCotisationMensuel();
     }
     // this.gainEspere = this.valeurEcheanceVoulue - this.valeurCotisationEcheance ;
 
     // this.rendemantObtenue = (this.gainEspere / this.valeurCotisationEcheance) * 100 ;
     // this.rendemantObtenue1 = this.rendemantObtenue.toPrecision(3)
-    this.calculCotisationMensuel()
+    //
+
   }
 
   public calculCotisationMensuel() {
@@ -129,13 +153,14 @@ export class SimulerEpargneDiasporaComponent implements OnInit {
     const val = 1 + ( this.tauxAnnuel / 100 );
     const val2 = Math.pow(val, val1);
     const montant = this.cotisationUnique * Math.pow( val2 ,  this.maturite);
-    this.cotisationMensuel = ( this.valeurEcheanceVoulue - montant) / this.calculSommeMontant(this.tauxAnnuel);
+    this.cotisationMensuel = ( this.valeurEcheanceVoulue - montant) / this.calculSommeMontant(this.tauxAnnuel );
+    this.cotisationMensuelAverse = this.cotisationMensuel.toFixed(1);
   }
   public calculMontantEcheanceUnique() {
     const val1 = 1 / 12;
     const val = 1 + ( this.tauxAnnuel / 100 );
     const val2 = Math.pow(val, val1);
-     return Math.trunc( this.valeurEcheanceUnique = this.cotisationUnique * Math.pow( val2, this.maturite ) );
+     return this.valeurEcheanceUnique = this.cotisationUnique * Math.pow( val2, this.maturite  );
   }
 
   public calculMontantAInvestirUnique() {

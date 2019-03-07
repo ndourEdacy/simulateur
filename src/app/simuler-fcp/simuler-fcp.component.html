@@ -23,7 +23,7 @@
                         <select id="inputState" class="form-control" [(ngModel)]="typeSimulation" name="typeSimulation" (change)="onChangeSimulation($event.target.value)">
 
                           <option value="sommeEcheance" selected>le client fixe la somme à investir</option>
-                          <option value="sommeInvestir">le client fixe la somme à echeance voulue</option>
+                          <option value="sommeInvestir">le client fixe la somme à écheance voulue</option>
                           <!-- <option value="sommeCautiser">Somme a cotiser</option> -->
 
                         </select>
@@ -34,7 +34,7 @@
                         <input class="form-control" id="formGroupExampleInput"  [(ngModel)]="maturite" name="maturite">
                     </div>
                       <div class="form-group" [hidden]="isMEUInput">
-                        <label for="formGroupExampleInput">Montant a Echeance voulue (fcfa)</label>
+                        <label for="formGroupExampleInput">Montant à écheance voulue (fcfa)</label>
                         <input class="form-control" id="formGroupExampleInput" placeholder="Donner la maturite du placement"
                                [(ngModel)]="montantVersementEcheanceUnique" name="montantVersementEcheanceUnique"
                               >
@@ -62,13 +62,13 @@
 
                 </div>
                 <div class="form-group">
-                  <label for="disabledTextInput">Taux Annuel en %</label>
-                  <input type="number" id="disabledTextInput" class="form-control"  [(ngModel)]="fcp.tauxAnnuel" name="tauxAnnuel" >
+                  <label for="disabledTextInput">Objectif de rendement Annuel en %</label>
+                  <input type="number" id="disabledTextInput" class="form-control"  [(ngModel)]="fcp.tauxAnnuel" name="tauxAnnuel" disabled>
                 </div>
 
                 <div class="form-group">
-                  <label for="disabledTextInput">Taux Mensuel en %</label>
-                  <input type="number" id="disabledTextInput" class="form-control"  [(ngModel)]="fcp.tauxMensuel" name="tauxMensuel" >
+                  <label for="disabledTextInput">Objectif de rendement mensuel équivalent en %</label>
+                  <input type="number" id="disabledTextInput" class="form-control"  [(ngModel)]="fcp.tauxMensuel" name="tauxMensuel" disabled>
                 </div>
 
             </form>
@@ -85,28 +85,28 @@
 
               <div class="form-group" [hidden]="idMEUOutput">
                   <label for="formGroupExampleInput">Capitalisation du versement unique (fcfa)</label>
-                  <input class="form-control" id="formGroupExampleInput" placeholder="Donner la maturite du placement"
-                        [(ngModel)]="montantVersementEcheanceUnique" name="montantVersementEcheanceUnique" disabled
+                  <input class="form-control" id="formGroupExampleInput"
+                        [(ngModel)]="montantVersementEcheanceUniqueVoulue" name="montantVersementEcheanceUniqueVoulue" disabled
                         >
               </div>
 
               <div class="form-group" [hidden]="idMEUOutput">
-                <label for="formGroupExampleInput">Capitalisation des versements Periodiques (fcfa)</label>
+                <label for="formGroupExampleInput">Capitalisation des versements périodiques (fcfa)</label>
                 <input class="form-control" id="formGroupExampleInput"
-                      [(ngModel)]="montantVersementEcheancePeriodique" name="montantVersementEcheancePeriodique" [disabled]="ish1">
+                      [(ngModel)]="montantVersementEcheancePeriodiqueVoulue" name="montantVersementEcheancePeriodiqueVoulue" [disabled]="ish1">
 
 
              </div>
 
              <div class="form-group" [hidden]="idMEUOutput">
-              <label for="formGroupExampleInput">Montant Total a Echeance (fcfa)</label>
-              <input class="form-control" id="formGroupExampleInput" placeholder="Donner la maturite du placement" [(ngModel)]="montantTotalEcheance" name="montantTotalEcheance" disabled>
+              <label for="formGroupExampleInput">Montant total à écheance (fcfa)</label>
+              <input class="form-control" id="formGroupExampleInput" [(ngModel)]="montantTotalEcheanceVoulue" name="montantTotalEcheanceVoulue" disabled>
 
 
             </div>
 
               <div class="form-group" [hidden]="isVUOutput">
-                <label for="formGroupExampleInput">Par Versement unique (fcfa)</label>
+                <label for="formGroupExampleInput">Par versement unique (fcfa)</label>
                 <input class="form-control" id="formGroupExampleInput" disabled
 
                       [(ngModel)]="montantAversementUnique"  name="montantAversementUnique">
@@ -117,7 +117,7 @@
               <label class="text-center">Ou</label>
             </div>
             <div class="form-group" [hidden]="isVPOutput">
-              <label for="formGroupExampleInput">Par Versement Mensuel (fcfa)</label>
+              <label for="formGroupExampleInput">Par versement mensuel (fcfa)</label>
               <input class="form-control" id="formGroupExampleInput"  disabled
                     [(ngModel)]="montantAversementPeriodique"  name="montantAversementPeriodique">
 

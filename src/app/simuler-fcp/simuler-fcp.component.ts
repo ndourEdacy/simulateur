@@ -46,8 +46,11 @@ export class SimulerFcpComponent implements OnInit {
    idMEPOutput = false ;
    isMEUInput = true;
    idMEUOutput = false ;
-   montantAversementPeriodique: string = '';
+   montantAversementPeriodique: string = '0.0';
    montantAversementUnique: string = '';
+   montantVersementEcheancePeriodiqueVoulue: string = '0.0';
+  montantVersementEcheanceUniqueVoulue: string = '0.0';
+  montantTotalEcheanceVoulue: string = '0.0'
    get tickInterval(): number | 'auto' {
      return this.showTicks ? (this.autoTicks ? 'auto' : this._tickInterval) : 0;
    }
@@ -99,6 +102,7 @@ export class SimulerFcpComponent implements OnInit {
       this.isMEUInput = true;
       this.idMEUOutput = false ;
      }
+     this.clean();
    }
 
   public onChangemontantVersementEcheancePeriodique = (event) => {
@@ -130,9 +134,10 @@ export class SimulerFcpComponent implements OnInit {
       }
       else if ( even === 'fcpdiaspora' || even === 'fcpretraite' ) {
         this.fcp.tauxAnnuel = 6 ;
-        this.fcp.tauxMensuel = 0.5;
+        this.fcp.tauxMensuel = 0.48;
       }
-      this.clean();
+       this.clean();
+
   }
 
   public getMaturite( even ) {
@@ -144,12 +149,17 @@ export class SimulerFcpComponent implements OnInit {
   }
 
   public clean() {
+    this.maturite = 12 ;
     this.montantVersementEcheancePeriodique = 0;
     this.versementPeriodique = 0;
     this.montantVersementEcheanceUnique = 0;
     this.montantTotalEcheance = 0;
     this.versementUnique = 0;
-
+    this.montantAversementPeriodique = '0.0';
+    this.montantAversementUnique = '0.0';
+    this.montantVersementEcheancePeriodiqueVoulue  = '0.0';
+    this.montantVersementEcheanceUniqueVoulue  = '0.0';
+    this.montantTotalEcheanceVoulue = '0.0';
   }
 
   public onChangeVersementPeriodique(event) {
@@ -161,15 +171,15 @@ export class SimulerFcpComponent implements OnInit {
   public calculMontantEcheanceParMois() {
     this.montantVersementEcheancePeriodique =  this.versementPeriodique * this.calculSommeMontant();
     //this.valeurCotisationEcheance = this.cotisationMensuel * this.maturite ;
-    this.montantAversementPeriodique =   this.montantVersementEcheancePeriodique.toFixed(2);
+    this.montantVersementEcheancePeriodiqueVoulue =   this.montantVersementEcheancePeriodique.toFixed(1);
     this.calculMontantEcheanceUnique();
-      console.log('calculMontantEcheanceParMois');
+    console.log('calculMontantEcheanceParMois');
  }
 
  public calculMontantAInvestirParMois() {
    this.versementPeriodique = this.montantVersementEcheanceUnique / this.calculSommeMontant() + 1;
    this.montantAversementPeriodique = this.versementPeriodique.toFixed(1);
-   console.log(this.montantAversementPeriodique)
+   console.log(this.montantAversementPeriodique);
    this.calculMontantAInvestirUnique();
 
  }
@@ -177,9 +187,11 @@ export class SimulerFcpComponent implements OnInit {
       const val1 = 1 / 12;
       const val2 = 1 + (  this.fcp.tauxAnnuel / 100 );
       const val = Math.pow(val2, val1);
-      this.montantVersementEcheanceUnique = Math.trunc(this.versementUnique * Math.pow( val, this.maturite ));
+      this.montantVersementEcheanceUnique = this.versementUnique * Math.pow( val, this.maturite );
+      this.montantVersementEcheanceUniqueVoulue = this.montantVersementEcheanceUnique.toFixed(1);
 
       this.montantTotalEcheance =  this.montantVersementEcheanceUnique + this.montantVersementEcheancePeriodique;
+      this.montantTotalEcheanceVoulue = this.montantTotalEcheance.toFixed(1);
  }
 
  public calculMontantAInvestirUnique() {
@@ -187,17 +199,17 @@ export class SimulerFcpComponent implements OnInit {
     const val2 = 1 + (  this.fcp.tauxAnnuel / 100 );
     const val = Math.pow(val2, val1);
     this.versementUnique = this.montantVersementEcheanceUnique /  Math.pow( val, this.maturite ) ;
-    this.montantAversementUnique =   this.versementUnique.toFixed(1)
+    this.montantAversementUnique =   this.versementUnique.toFixed(1);
  }
 
  public calculSommeMontant() {
    let som = 0 ;
    const val1 = 1 / 12;
-   const val2 = 1 + (  this.fcp.tauxMensuel / 100 );
-   //const val = Math.pow(val2, val1);
+   const val2 = 1 + (  this.fcp.tauxAnnuel / 100 );
+   const val = Math.pow(val2, val1);
 
    for ( let i = 1 ; i <= this.maturite ; i++) {
-     som +=   Math.pow( val2, i );
+     som +=   Math.pow( val, i );
    }
    return som;
  }
