@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { coerceNumberProperty } from '@angular/cdk/coercion';
+import { SimulateurService } from '../simulateur.service';
 
 @Component({
   selector: 'app-simuler-fcp',
@@ -59,8 +60,10 @@ export class SimulerFcpComponent implements OnInit {
    }
    private _tickInterval = 1;
 
-  constructor() { }
-
+  constructor(private simulateurservice: SimulateurService) { }
+  retour () {
+    this.simulateurservice.retour();
+  }
   ngOnInit() {
   }
 

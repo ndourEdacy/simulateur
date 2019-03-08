@@ -17,6 +17,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MyCurrencyPipe } from './MyCurrencyPipe';
+import { NavbarComponent } from './navbar/navbar.component';
+import { FooterComponent } from './footer/footer.component';
 const routes: Routes =[
   {
     path: 'simulateur',
@@ -53,7 +55,9 @@ const routes: Routes =[
     SimulerEpargneDiasporaComponent,
     SimulerFcpComponent,
     MainNavComponent,
-    MyCurrencyPipe
+    MyCurrencyPipe,
+    NavbarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {coerceNumberProperty} from '@angular/cdk/coercion';
+import { SimulateurService } from '../simulateur.service';
 @Component({
   selector: 'app-simuler-epargne-diaspora',
   templateUrl: './simuler-epargne-diaspora.component.html',
@@ -50,7 +51,10 @@ export class SimulerEpargneDiasporaComponent implements OnInit {
     this._tickInterval = coerceNumberProperty(value);
   }
   private _tickInterval = 1;
-  constructor() { }
+  constructor(private simulateurservice: SimulateurService) { }
+  retour () {
+    this.simulateurservice.retour();
+  }
 
   ngOnInit() {
   }

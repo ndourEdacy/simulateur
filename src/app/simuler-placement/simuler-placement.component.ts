@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SimulateurService } from '../simulateur.service';
 @Component({
   selector: 'app-simuler-placement',
   templateUrl: './simuler-placement.component.html',
@@ -31,7 +32,6 @@ export class SimulerPlacementComponent implements OnInit {
       'pourcentageRendement': 5.00
   };
   montantparMoi: Array<number> = [];
-  constructor() { }
   public pieChartLabels: string[] = ['Pending', 'InProgress', 'OnHold', 'Complete', 'Cancelled'];
   public pieChartData: number[] = [21, 39, 10, 14, 16];
   public pieChartType: string = 'line';
@@ -42,6 +42,11 @@ export class SimulerPlacementComponent implements OnInit {
                                 '#E7E9ED',
                                 '#36A2EB'
                               ]};
+  constructor(private simulateurservice: SimulateurService) { }
+  retour () {
+    this.simulateurservice.retour();
+  }
+
 
       public chartClicked(e: any): void {
         console.log(e);

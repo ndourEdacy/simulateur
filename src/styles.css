@@ -21,8 +21,29 @@ body {
 .foot {
   height: 60px !important;
 }
-@media screen and (max-width: 992px) {
-  .positionContainer {
+
+@media(max-width: 767px){
+ .containerbutton{
+   margin-right: 30px;
+   margin-top: 300px;
+ }
+ .tbt {
+   margin-top: 5px;
+ }
+
+}
+/* Entrez ici vos propriÃ©tÃ©s CSS lorsque l'utilisateur est sur tablette */
+@media(min-width: 768px) and (max-width: 1388px)
+{
+  .containerbutton{
+    margin-right: 30px;
+    margin-top: 300px;
+  }
+  .tbt {
     margin-top: 5px;
   }
+  .taillediv2 {
+    height: 100% !important;
+  }
 }
+
