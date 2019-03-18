@@ -3,13 +3,16 @@
 
 body {
   margin: 0;
+  box-sizing: border-box;
 }
 
 .taillediv {
-  height: 520px !important;
+  /* height: 670px !important; */
+  min-height: 550px;
+  max-height: 670px;
 }
 .taillDiv1 {
-  height: 450px !important;
+  height: 500px !important;
 }
 
 .positionContainer {
@@ -23,10 +26,10 @@ body {
 }
 
 @media(max-width: 767px){
- .containerbutton{
+ /* .containerbutton{
    margin-right: 30px;
    margin-top: 300px;
- }
+ } */
  .tbt {
    margin-top: 5px;
  }
@@ -35,15 +38,18 @@ body {
 /* Entrez ici vos propriÃ©tÃ©s CSS lorsque l'utilisateur est sur tablette */
 @media(min-width: 768px) and (max-width: 1388px)
 {
-  .containerbutton{
+  /* .containerbutton{
     margin-right: 30px;
     margin-top: 300px;
-  }
+  } */
   .tbt {
     margin-top: 5px;
   }
-  .taillediv2 {
+  /* .taillediv2 {
     height: 100% !important;
+  } */
+  .containerbutton {
+    bottom: 125px;
   }
 }
 

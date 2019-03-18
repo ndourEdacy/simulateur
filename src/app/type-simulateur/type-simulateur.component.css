@@ -1,11 +1,26 @@
-.containerbutton {
-  margin-top: 25%;
-  margin-left: 80%;
-  height: 300px;
-  width: 400px;
-
+.container {
+  width: 100%;
+  height: 100%;
+  background: red;
 }
+
+.containerbutton {
+  /* margin-top: 25%;
+  margin-left: 80%; */
+  height: 300px;
+  /* width: 400px; */
+  display: flex;
+  position: absolute;
+  right: 20px;
+  bottom: 125px;
+}
+
 .positionrow {
-  margin-top: 20px;
-  margin-left: 20%;
+  /* margin-top: 20px;
+  margin-left: 20%; */
+  margin: 10px 20px;
+}
+
+.card-footer {
+  padding: 5px;
 }

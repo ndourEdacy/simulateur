@@ -1,11 +1,11 @@
 <div class="container positionContainer">
   <div class="row">
-      <div class="col-sm-6 ">
+      <div class="col-sm-12 col-md-6 card-from">
         <div class="card taillediv2">
           <div class="card-body taillediv ">
                 <form>
                     <div class="row">
-                      <div class="form-group col-md-6">
+                      <div class="form-group col-sm-12 col-md-12 col-lg-6">
                         <label for="inputState">Choix FCP</label>
                         <select id="inputState" class="form-control" [(ngModel)]="fcp.typeFcp" name="typeFcp" (change)="onChangeFcp($event.target.value)">
 
@@ -18,7 +18,7 @@
                           <option value="fcpretraite">Capital retraite</option>
                         </select>
                       </div>
-                      <div class="form-group col-md-6">
+                      <div class="form-group col-sm-12 col-md-12 col-lg-6">
                         <label for="inputState">Type simulation</label>
                         <select id="inputState" class="form-control" [(ngModel)]="typeSimulation" name="typeSimulation" (change)="onChangeSimulation($event.target.value)">
 
@@ -78,7 +78,7 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-12 col-md-6 card-from">
         <div class="card">
           <div class="card-body taillediv">
             <form>
