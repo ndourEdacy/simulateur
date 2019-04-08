@@ -86,21 +86,21 @@
               <div class="form-group" [hidden]="idMEUOutput">
                   <label for="formGroupExampleInput">Capitalisation du versement unique (fcfa)</label>
                   <input class="form-control" id="formGroupExampleInput"
-                        [(ngModel)]="montantVersementEcheanceUniqueVoulue" name="montantVersementEcheanceUniqueVoulue" disabled
+                        [ngModel]="montantVersementEcheanceUniqueVoulue | number : '1.1-10'" name="montantVersementEcheanceUniqueVoulue" disabled
                         >
               </div>
 
               <div class="form-group" [hidden]="idMEUOutput">
                 <label for="formGroupExampleInput">Capitalisation des versements périodiques (fcfa)</label>
                 <input class="form-control" id="formGroupExampleInput"
-                      [(ngModel)]="montantVersementEcheancePeriodiqueVoulue" name="montantVersementEcheancePeriodiqueVoulue" [disabled]="ish1">
+                      [ngModel]="montantVersementEcheancePeriodiqueVoulue | number : '1.1-10'" name="montantVersementEcheancePeriodiqueVoulue" [disabled]="ish1">
 
 
              </div>
 
              <div class="form-group" [hidden]="idMEUOutput">
               <label for="formGroupExampleInput">Montant total à écheance (fcfa)</label>
-              <input class="form-control" id="formGroupExampleInput" [(ngModel)]="montantTotalEcheanceVoulue" name="montantTotalEcheanceVoulue" disabled>
+              <input class="form-control" id="formGroupExampleInput" [ngModel]="montantTotalEcheanceVoulue | number : '1.1-10'" name="montantTotalEcheanceVoulue" disabled>
 
 
             </div>
@@ -109,7 +109,7 @@
                 <label for="formGroupExampleInput">Par versement unique (fcfa)</label>
                 <input class="form-control" id="formGroupExampleInput" disabled
 
-                      [(ngModel)]="montantAversementUnique"  name="montantAversementUnique">
+                      [ngModel]="montantAversementUnique | number : '1.1-10'"  name="montantAversementUnique">
 
 
             </div>
@@ -119,7 +119,7 @@
             <div class="form-group" [hidden]="isVPOutput">
               <label for="formGroupExampleInput">Par versement mensuel (fcfa)</label>
               <input class="form-control" id="formGroupExampleInput"  disabled
-                    [(ngModel)]="montantAversementPeriodique"  name="montantAversementPeriodique">
+                    [ngModel]="montantAversementPeriodique | number : '1.1-10'"  name="montantAversementPeriodique">
 
 
             </div>

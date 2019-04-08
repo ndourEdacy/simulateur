@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule , LOCALE_ID} from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,6 +19,10 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MyCurrencyPipe } from './MyCurrencyPipe';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
+import localeFr from '@angular/common/locales/fr';
+import { registerLocaleData } from '@angular/common';
+import { NumberPipePipePipe } from './number-pipe-pipe.pipe';
+registerLocaleData(localeFr);
 const routes: Routes =[
   {
     path: 'simulateur',
@@ -57,7 +61,8 @@ const routes: Routes =[
     MainNavComponent,
     MyCurrencyPipe,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    NumberPipePipePipe
   ],
   imports: [
     BrowserModule,
@@ -77,8 +82,9 @@ const routes: Routes =[
     LayoutModule,
     MatSidenavModule,
     MatListModule,
+
   ],
-  providers: [],
+  providers: [{ provide: LOCALE_ID, useValue: 'fr-FR' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

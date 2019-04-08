@@ -60,7 +60,7 @@
               <form>
                 <div class="form-group" [hidden]="isCMOutPut">
                   <label for="formGroupExampleInput"> Par versement mensuel (fcfa)</label>
-                  <input type="number" class="form-control" id="formGroupExampleInput"  [(ngModel)]="cotisationMensuelAverse"  name="cotisationMensuelAverse" disabled>
+                  <input  class="form-control" id="formGroupExampleInput"  [ngModel]="cotisationMensuelAverse | number : '1.1-10'"  name="cotisationMensuelAverse" disabled>
 
 
                 </div>
@@ -69,26 +69,26 @@
                 </div>
                 <div class="form-group" [hidden]="!isHypothese3 || isCMOutPut">
                   <label for="formGroupExampleInput">Par versement Unique (fcfa)</label>
-                  <input type="number" class="form-control" id="formGroupExampleInput" disabled [(ngModel)]="cotisationUniqueAverse"  name="cotisationUniqueAverse">
+                  <input  class="form-control" id="formGroupExampleInput" disabled [ngModel]="cotisationUniqueAverse | number : '1.1-10'"  name="cotisationUniqueAverse">
 
                 </div>
                   <div class="form-group" [hidden]="!isCMOutPut">
                       <label for="formGroupExampleInput">Montant total versé (fcfa)</label>
-                      <input type="number" class="form-control" id="formGroupExampleInput"[(ngModel)]="valeurCotisationEcheanceVoulue" name="valeurCotisationEcheanceVoulue" disabled>
+                      <input  class="form-control" id="formGroupExampleInput"[ngModel]="valeurCotisationEcheanceVoulue | number : '1.1-10'" name="valeurCotisationEcheanceVoulue" disabled>
                   </div>
 
                   <div class="form-group" [hidden]="isVEOutput">
                     <label for="formGroupExampleInput">Montant espéré à écheance (fcfa)</label>
-                    <input type="number" class="form-control" id="formGroupExampleInput"  [(ngModel)]="valeurEcheanceVoulue2" name="valeurEcheanceVoulue2" [disabled]="ish1" >
+                    <input  class="form-control" id="formGroupExampleInput"  [ngModel]="valeurEcheanceVoulue2 | number : '1.1-10'" name="valeurEcheanceVoulue2" [disabled]="ish1" >
                  </div>
 
                  <div class="form-group" [hidden]="isVEOutput">
                   <label for="disabledTextInput">Gain espéré  à écheance (fcfa)</label>
-                  <input type="number" id="disabledTextInput" class="form-control" [(ngModel)]="gainEspereVoulue" name="gainEspereVoulue" disabled >
+                  <input  id="disabledTextInput" class="form-control" [ngModel]="gainEspereVoulue | number : '1.1-10'" name="gainEspereVoulue" disabled >
                </div>
                <div class="form-group" [hidden]="isVEOutput">
                 <label for="disabledTextInput">Rendement de l'investissement (%)</label>
-                <input type="number" id="disabledTextInput" class="form-control" [(ngModel)]="rendemantObtenue1 " name="rendemantObtenue1" disabled >
+                <input id="disabledTextInput" class="form-control" [ngModel]="rendemantObtenue1 | number : '1.1-10'" name="rendemantObtenue1" disabled >
 
              </div>
 

@@ -43,19 +43,19 @@
 
                     <div class="form-group">
                         <label for="formGroupExampleInput">Montant total versé (fcfa)</label>
-                        <input class="form-control" id="formGroupExampleInput" [(ngModel)]="montantTotalPlacementVoulue" name="montantTotalPlacementVoulue" disabled>
+                        <input class="form-control" id="formGroupExampleInput" [ngModel]="montantTotalPlacementVoulue | number : '1.1-10'" name="montantTotalPlacementVoulue" disabled>
                     </div>
                     <div class="form-group">
                       <label for="formGroupExampleInput">Montant espéré  a écheance (fcfa)</label>
-                      <input class="form-control" id="formGroupExampleInput"  [(ngModel)]="montantEspereVoulue" name="montantEspereVoulue" disabled>
+                      <input class="form-control" id="formGroupExampleInput"  [ngModel]="montantEspereVoulue | number : '1.1-10'" name="montantEspereVoulue" disabled>
                     </div>
                     <div class="form-group">
                         <label for="disabledTextInput">Gain espéré  a écheance (fcfa)</label>
-                        <input type="number" id="disabledTextInput" class="form-control" [(ngModel)]="gainEspereVoulue" name="gainEspereVoulue" disabled >
+                        <input id="disabledTextInput" class="form-control" [ngModel]="gainEspereVoulue | number : '1.1-10'" name="gainEspereVoulue" disabled >
                      </div>
                      <div class="form-group">
                       <label for="disabledTextInput">Rendement de l'investissement (%)</label>
-                      <input type="number" id="disabledTextInput" class="form-control" [(ngModel)]="rendemantObtenue1 " name="rendemantObtenue1" disabled >
+                      <input  id="disabledTextInput" class="form-control" [ngModel]="rendemantObtenue1 | number : '1.1-10'" name="rendemantObtenue1" disabled >
 
                    </div>
 
@@ -124,9 +124,9 @@
                         <tbody>
                           <tr>
 
-                            <td>{{montantTotalPlacementVoulue }}</td>
-                            <td>{{montantCombinaisonEspereVuolue}}</td>
-                            <td>{{gainEspereVoulue}}</td>
+                            <td>{{montantTotalPlacementVoulue | number : '1.1-10' }}</td>
+                            <td>{{montantCombinaisonEspereVuolue | number : '1.1-10'}}</td>
+                            <td>{{gainEspereVoulue | number : '1.1-10'}}</td>
                           </tr>
 
 
